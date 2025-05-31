@@ -12,3 +12,65 @@ body {
   padding: 0.8rem 0rem;
   box-sizing: border-box;
 }
+
+/* ==================== 다크 모드 ==================== */
+body.dark {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+body.dark a {
+  color: #f0f0f0;
+}
+
+body.dark .header {
+  background-color: #1e1e1e;
+  border-bottom: 1px solid #333;
+}
+
+body.dark .service-card {
+  background-color: #1e1e1e;
+  color: #fff;
+}
+
+body.dark .hamburger-menu {
+  background-color: #2a2a2a;
+  color: #f0f0f0;
+}
+
+body.dark .hamburger-menu .nav-menu a {
+  color: #f0f0f0;
+}
+
+body.dark .hamburger-menu .nav-menu a:hover {
+  color: #90cdf4;
+}
+
+body.dark .hamburger-menu .icon-button img {
+  filter: brightness(1.2);
+}
+
+body.dark .mobile-drawer {
+  background-color: #000000;
+  color: #f0f0f0;
+}
+
+body.dark .mobile-drawer .nav-menu a {
+  color: #f0f0f0;
+}
+
+body.dark .mobile-drawer-header {
+  border-bottom: 1px solid #837a7a;
+}
+
+body.dark .mobile-icons .icon-button img {
+  filter: brightness(0.9);
+}
+
+/* 부드러운 전환 효과 */
+body,
+.header,
+.hamburger-menu,
+.service-card {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

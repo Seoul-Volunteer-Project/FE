@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Header.css";
 
 // 아이콘 이미지 경로
@@ -11,8 +11,22 @@ import iconClose from "../assets/close.png";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  // 다크모드 전환 시 body 클래스 토글
+  useEffect(() => {
+    if (isDarkMode) {
+      document.body.classList.add("dark");
+    } else {
+      document.body.classList.remove("dark");
+    }
+  }, [isDarkMode]);
 
   const closeMenu = () => setIsMenuOpen(false);
+
+  const toggleDarkMode = () => {
+    setIsDarkMode((prev) => !prev);
+  };
 
   return (
     <>
@@ -49,8 +63,8 @@ function Header() {
             <button className="icon-button">
               <img src={iconUser} alt="profile" />
             </button>
-            <button className="icon-button">
-              <img src={iconMoon} alt="dark mode" />
+            <button className="icon-button" onClick={toggleDarkMode}>
+              <img src={isDarkMode ? iconSun : iconMoon} alt="theme toggle" />
             </button>
           </div>
 
@@ -75,8 +89,8 @@ function Header() {
             <button className="icon-button">
               <img src={iconUser} alt="profile" />
             </button>
-            <button className="icon-button">
-              <img src={iconMoon} alt="moon" />
+            <button className="icon-button" onClick={toggleDarkMode}>
+              <img src={isDarkMode ? iconSun : iconMoon} alt="theme toggle" />
             </button>
             <button className="icon-button" onClick={closeMenu}>
               <img src={iconClose} alt="close" />
