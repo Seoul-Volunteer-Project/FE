@@ -1,0 +1,14 @@
+/* global.css */
+body {
+  margin: 0;
+  font-family: "Pretendard", sans-serif;
+  background-color: #fff;
+  color: #111;
+}
+
+.wrapper {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0.8rem 0rem;
+  box-sizing: border-box;
+}

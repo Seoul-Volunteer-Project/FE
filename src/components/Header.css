@@ -1,0 +1,242 @@
+/* ===== 공통 헤더 (데스크탑용) ===== */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.9rem;
+  height: 72px;
+  border-bottom: 1px solid #eee;
+  background-color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* 로고 (헤더 좌측) */
+.logo {
+  font-weight: 500;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+
+/* 중앙 메뉴 (데스크탑 전용) */
+.header-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 7rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.nav-menu li a:hover {
+  color: #007acc;
+}
+
+/* 우측 아이콘 버튼들 */
+.header-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1.5rem;
+  margin-left: auto;
+  height: 64px;
+  flex-wrap: nowrap;
+}
+.icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.desktop-icons {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 공통 아이콘 버튼 스타일 */
+.icon-button,
+.hamburger-button {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.icon-button img,
+.hamburger-button img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* 햄버거는 기본 숨김 */
+.hamburger-button {
+  display: none;
+}
+
+/* ===== 모바일 드로어 (햄버거 열릴 때) ===== */
+.mobile-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 412px; /* ✅ 고정 너비 */
+  height: 100%;
+  background-color: white;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.15);
+  z-index: 200;
+
+  transform: translateX(100%);
+  transition: transform 0.2s ease-in-out, opacity 0.3s;
+  opacity: 0;
+  pointer-events: none;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 0.5rem 0.1rem;
+  box-sizing: border-box; /* ✅ padding 포함한 너비로 계산 */
+}
+
+/* 드로어가 열렸을 때 */
+.mobile-drawer.open {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* 드로어 상단 (로고 + 아이콘 버튼 3개) */
+.mobile-drawer-header {
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.mobile-logo {
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+.mobile-icons {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.mobile-icons .icon-button {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.mobile-icons .icon-button img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* 드로어 안 수직 메뉴 항목 */
+.nav-menu.vertical {
+  list-style: none;
+  margin: 0;
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  align-items: flex-start;
+}
+
+.nav-menu.vertical li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* ===== 오버레이 (배경 어둡게) ===== */
+.drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 412px; /* 드로어 제외한 영역만 어둡게 */
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0);
+  z-index: 150;
+  animation: fadeIn 0.3s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* ===== 반응형 (모바일 전용 스타일) ===== */
+@media (max-width: 768px) {
+  .desktop-icons {
+    display: none;
+  }
+
+  .hamburger-button {
+    display: block;
+  }
+
+  .header-center {
+    display: none !important;
+  }
+}
+
+/* 화면 너비 > 550px일 때 햄버거 내의 홈로고 제거 */
+@media (min-width: 550px) {
+  .mobile-logo {
+    visibility: hidden; /* ❌ 안 보이게 */
+    pointer-events: none; /* 클릭도 방지 */
+  }
+}
+
+/* 화면 너비 ≤ 412px일 때 햄버거 width를 100%로 변경 */
+@media (max-width: 412px) {
+  .mobile-drawer {
+    width: 100%;
+  }
+
+  .drawer-overlay {
+    right: 0; /* 전체화면 어둡게 */
+  }
+}
