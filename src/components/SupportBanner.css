@@ -1,0 +1,128 @@
+.support-banner {
+  display: flex;
+  width: 100%;
+  height: 400px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #ffffff;
+  overflow: hidden;
+}
+
+/* 왼쪽 : 슬라이드 영역 */
+.banner-left {
+  flex: 2;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  height: 100%;
+}
+
+.banner-item {
+  flex: 0 0 33.3%;
+  max-width: 33.3%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner-item img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+/* 오른쪽 : 맞춤 지원사업 찾기 영역 */
+.banner-right {
+  flex: 1;
+  background-color: #2b2b2c;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* ✅ 수직 중앙 정렬 */
+  align-items: center; /* ✅ 수평 중앙 정렬 */
+  text-align: justify;
+}
+
+.banner-right h1 {
+  font-size: 2rem;
+  line-height: 1.8;
+  margin-bottom: 1.7rem;
+  color: #ffffff;
+  max-width: 350px;
+}
+
+.banner-right h2 {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 1.7rem;
+  color: #ffffff;
+  max-width: 350px;
+}
+
+.search-button {
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 0.8rem 1.6rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.3rem;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.search-button:hover {
+  background-color: #4da9eb;
+  transform: scale(1.05);
+}
+
+/* 다크모드 대응 */
+body.dark .support-banner {
+  background-color: #1e1e1e;
+  border-bottom: 1px solid #000000;
+}
+
+body.dark .banner-right {
+  background-color: #2a2a2a;
+  color: #f0f0f0;
+}
+
+body.dark .search-button {
+  background-color: #ffffff;
+}
+
+body.dark .search-button:hover {
+  background-color: #005fa3;
+}
+
+body.dark .banner-item img {
+  filter: brightness(0.9);
+}
+
+/* 모바일 반응형 */
+@media (max-width: 768px) {
+  .support-banner {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .banner-left,
+  .banner-right {
+    flex: none;
+    width: 100%;
+    height: auto;
+  }
+
+  .banner-right {
+    align-items: center;
+    text-align: center;
+  }
+}

@@ -41,13 +41,13 @@ function Header() {
               <a href="#intro">소개</a>
             </li>
             <li>
-              <a href="#service">서비스</a>
+              <a href="#service">청년정보</a>
             </li>
             <li>
-              <a href="#program">프로그램</a>
+              <a href="#program">지원사업</a>
             </li>
             <li>
-              <a href="#contact">문의하기</a>
+              <a href="#contact">소통공간</a>
             </li>
           </ul>
         </nav>
@@ -106,17 +106,17 @@ function Header() {
           </li>
           <li>
             <a href="#service" onClick={closeMenu}>
-              서비스
+              청년정보
             </a>
           </li>
           <li>
             <a href="#program" onClick={closeMenu}>
-              프로그램
+              지원사업
             </a>
           </li>
           <li>
             <a href="#contact" onClick={closeMenu}>
-              문의하기
+              소통공간
             </a>
           </li>
         </ul>
