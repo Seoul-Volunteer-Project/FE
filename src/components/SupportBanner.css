@@ -2,9 +2,10 @@
   display: flex;
   width: 100%;
   height: 400px;
-  background-color: #ffffff;
-  border-bottom: 1px solid #ffffff;
+  background-color: #f4f4f4;
+  border-bottom: 0px solid #ffffff;
   overflow: hidden;
+  border-radius: 7px;
 }
 
 /* 왼쪽 : 슬라이드 영역 */
@@ -21,11 +22,12 @@
   display: flex;
   transition: transform 0.5s ease-in-out;
   height: 100%;
+  gap: 1.5rem; /* ✅ 배너들 간 간격 넓히기 */
 }
 
 .banner-item {
-  flex: 0 0 33.3%;
-  max-width: 33.3%;
+  flex: 0 0 40%;
+  max-width: 40%;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -33,10 +35,10 @@
 }
 
 .banner-item img {
-  max-width: 90%;
-  max-height: 90%;
+  max-width: 95%;
+  max-height: 95%;
   object-fit: contain;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
 /* 오른쪽 : 맞춤 지원사업 찾기 영역 */
@@ -80,7 +82,7 @@
 }
 
 .search-button:hover {
-  background-color: #4da9eb;
+  background-color: #f4f4f4;
   transform: scale(1.05);
 }
 
@@ -100,7 +102,7 @@ body.dark .search-button {
 }
 
 body.dark .search-button:hover {
-  background-color: #005fa3;
+  background-color: #f0f8aa;
 }
 
 body.dark .banner-item img {

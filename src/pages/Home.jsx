@@ -37,7 +37,6 @@ const services = [
 function Home() {
   return (
     <main className="home-container">
-      <h1 className="main-title">청소년 복지 서비스</h1>
       <p className="subtitle">
         청소년들의 건강한 성장과 발달을 지원하는 다양한 복지 서비스를
         제공합니다.

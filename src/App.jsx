@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
+import SupportBanner from "./components/SupportBanner";
 import Home from "./pages/Home";
 import "./styles/global.css";
-import SupportBanner from "./components/SupportBanner";
 
 function App() {
   return (
@@ -10,6 +12,7 @@ function App() {
       <Header />
       <SupportBanner />
       <Home />
+      <Footer />
     </div>
   );
 }

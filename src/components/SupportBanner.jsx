@@ -15,25 +15,48 @@ const bannerItems = [
 
 function SupportBanner() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isTransition, setIsTransition] = useState(true);
   const slideRef = useRef(null);
+
+  const totalItems = bannerItems.length * 2; // 원본 + 복제
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % bannerItems.length);
+      setCurrentIndex((prevIndex) => prevIndex + 1);
     }, 3000);
     return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
-    const slideWidth = slideRef.current.scrollWidth / (bannerItems.length * 2); // ✅ 전체 항목 수에 맞게 조정
+    if (!slideRef.current) return;
+
+    const totalWidth = slideRef.current.scrollWidth;
+    const itemWidth = totalWidth / totalItems;
+
+    const container = slideRef.current.parentElement;
+    const containerWidth = container.clientWidth;
+    const offset = containerWidth / 2 - itemWidth / 2;
+
+    slideRef.current.style.transition = isTransition
+      ? "transform 0.5s ease-in-out"
+      : "none";
     slideRef.current.style.transform = `translateX(-${
-      slideWidth * currentIndex
+      itemWidth * currentIndex - offset
     }px)`;
-  }, [currentIndex]);
+
+    // ✅ 무한 루프 핵심 부분
+    if (currentIndex >= bannerItems.length) {
+      setTimeout(() => {
+        setIsTransition(false);
+        setCurrentIndex(0);
+      }, 500); // 트랜지션 종료 후 바로 리셋
+    } else {
+      setIsTransition(true);
+    }
+  }, [currentIndex, isTransition, totalItems]);
 
   return (
     <div className="support-banner">
-      {/* 왼쪽 : 슬라이드 영역 */}
       <div className="banner-left">
         <div className="banner-track" ref={slideRef}>
           {[...bannerItems, ...bannerItems].map((item, index) => (
@@ -50,7 +73,6 @@ function SupportBanner() {
         </div>
       </div>
 
-      {/* 오른쪽 : 맞춤 검색 영역 */}
       <div className="banner-right">
         <h1>
           청소년들의 건강한 성장과

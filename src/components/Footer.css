@@ -1,0 +1,156 @@
+.footer {
+  width: 100%;
+  background-color: #f5f5f5;
+  padding: 1.5rem 0rem;
+  border-top: 1px solid #ddd;
+  margin-top: 150px;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+/* 좌측 영역 */
+.footer-left {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-logo {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #5a5a5a;
+}
+
+.footer-info p {
+  font-size: 0.9rem;
+  margin: 0.2rem 0;
+  color: #333;
+}
+
+/* 우측 영역 */
+.footer-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.8rem;
+  min-width: 200px;
+}
+
+.contact-button {
+  background-color: #f5f5f5;
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.contact-button:hover {
+  background-color: #b6b6b6;
+}
+
+.sns-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.sns-icon-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: white;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  cursor: pointer;
+}
+
+.sns-icon-button img {
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
+}
+
+.sns-button:hover {
+  background-color: #b6b6b6;
+}
+
+/* 하단 링크 영역 */
+.footer-bottom {
+  max-width: 1200px;
+  margin: 1rem auto 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  font-size: 0.85rem;
+  color: #666;
+  justify-content: center;
+  border-top: 1px solid #ddd;
+  padding-top: 1rem;
+}
+
+.footer-bottom a {
+  text-decoration: none;
+  color: #666;
+}
+
+.footer-bottom a:hover {
+  text-decoration: underline;
+}
+
+/* 다크모드 */
+body.dark .footer {
+  background-color: #1e1e1e;
+}
+
+body.dark .footer-info p,
+body.dark .footer-bottom,
+body.dark .footer-bottom a {
+  color: #aaa;
+}
+
+body.dark .contact-button {
+  background-color: #979797;
+}
+
+body.dark .contact-button:hover {
+  background-color: #686868;
+}
+
+body.dark .sns-icon-button {
+  background-color: #979797;
+  border: 1px solid #555;
+}
+
+body.dark .sns-icon-button:hover {
+  background-color: #686868;
+}
+
+/* 모바일 반응형 */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .footer-right {
+    align-items: flex-start;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}

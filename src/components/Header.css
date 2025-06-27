@@ -14,7 +14,7 @@
 
 /* 로고 (헤더 좌측) */
 .logo {
-  font-weight: 500;
+  font-weight: 700;
   font-size: 1.5rem;
   display: flex;
   align-items: center;
@@ -34,17 +34,46 @@
   gap: 7rem;
   margin: 0;
   padding: 0;
+  position: relative;
+}
+
+.nav-menu li {
+  position: relative;
 }
 
 .nav-menu li a {
   text-decoration: none;
   color: #333;
   font-weight: 500;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  display: inline-block;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.nav-menu li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background-color: #007acc;
+  transition: width 0.3s;
 }
 
 .nav-menu li a:hover {
-  color: #007acc;
+  color: #000000;
+  transform: scale(1.05);
+}
+
+.nav-menu li a:hover::after {
+  width: 100%;
+}
+
+/* 다크모드 대응 */
+body.dark .nav-menu li a:hover {
+  color: #ffffff;
+  transform: scale(1.05);
 }
 
 /* 우측 아이콘 버튼들 */
