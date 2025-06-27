@@ -1,4 +1,5 @@
 // src/pages/Home.jsx
+import SupportBanner from "../components/SupportBanner";
 import ServiceCard from "../components/ServiceCard";
 import "./Home.css";
 
@@ -37,6 +38,7 @@ const services = [
 function Home() {
   return (
     <main className="home-container">
+      <SupportBanner />
       <p className="subtitle">
         청소년들의 건강한 성장과 발달을 지원하는 다양한 복지 서비스를
         제공합니다.

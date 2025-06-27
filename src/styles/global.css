@@ -1,4 +1,11 @@
 /* global.css */
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
 body {
   margin: 0;
   font-family: "Pretendard", sans-serif;
@@ -6,11 +13,22 @@ body {
   color: #111;
 }
 
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
 .wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
   max-width: 1300px;
   margin: 0 auto;
   padding: 0rem 0rem;
   box-sizing: border-box;
+}
+
+.main-content {
+  flex: 1;
 }
 
 /* ==================== 다크 모드 ==================== */

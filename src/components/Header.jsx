@@ -32,7 +32,9 @@ function Header() {
     <>
       {/* 헤더 */}
       <header className="header">
-        <div className="logo">Youth Care</div>
+        <div className="logo">
+          <a href="/"> Youth Care</a>
+        </div>
 
         {/* 중앙 메뉴 (데스크탑) */}
         <nav className="header-center">
@@ -44,10 +46,10 @@ function Header() {
               <a href="#service">청년정보</a>
             </li>
             <li>
-              <a href="#program">지원사업</a>
+              <a href="/support">지원사업</a>
             </li>
             <li>
-              <a href="#contact">소통공간</a>
+              <a href="/community">소통공간</a>
             </li>
           </ul>
         </nav>

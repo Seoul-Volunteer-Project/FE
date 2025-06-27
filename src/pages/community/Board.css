@@ -1,0 +1,151 @@
+.board-page {
+  padding: 1rem;
+}
+
+.board-title {
+  font-size: 1.8rem;
+  font-weight: 400;
+  text-align: left;
+  padding-bottom: 0.8rem;
+  border-bottom: 4px solid #000000; /* ✅ 구분선 색상과 두께 */
+  margin-bottom: 3rem;
+  display: inline-block;
+}
+
+.board-search {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+/* 드롭다운 (검색 유형) */
+.board-search select {
+  height: 39px;
+  padding: 0 0.8rem;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+  margin-right: 0.5rem;
+  border-radius: 0px;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* 입력칸과 버튼을 한 덩어리로 묶기 위해 래퍼 사용 (HTML 구조에서 div로 묶어줘야 함) */
+.search-input-group {
+  display: flex;
+  align-items: center;
+}
+
+/* 입력창 */
+.board-search input {
+  height: 38px;
+  padding: 0 0.8rem;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+  border-right: none; /* ✅ 버튼과 붙이기 위해 */
+  border-radius: 0px;
+  outline: none;
+}
+
+/* 검색 버튼 */
+.board-search button {
+  height: 39px;
+  padding: 0 1rem;
+  background-color: #2b2b2c;
+  color: white;
+  border: 1px solid #2b2b2c;
+  border-left: none; /* ✅ 입력칸과 붙이기 위해 */
+  border-radius: 0px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.board-search button:hover {
+  background-color: #2b2b2c;
+  transform: scale(1.05);
+}
+
+.board-table {
+  width: 100%;
+  border-top: 2px solid #000000;
+  border-collapse: collapse;
+  table-layout: fixed; /* ✅ 열 너비 강제 적용을 위해 중요! */
+}
+
+.board-table th,
+.board-table td {
+  border-bottom: 1px solid #ccc;
+  padding: 0.6rem;
+  text-align: center;
+  font-size: 0.95rem;
+  overflow: hidden;
+  text-overflow: ellipsis; /* ✅ 내용이 넘칠 경우 ... 처리 */
+  white-space: nowrap;
+}
+
+.board-table th {
+  background-color: #ffffff;
+  font-weight: 600;
+}
+
+.board-table tr:hover {
+  background-color: #f9f9f9;
+}
+
+body.dark .board-table th {
+  background-color: #333;
+  color: #fff;
+}
+
+body.dark .board-table td {
+  background-color: #222;
+  color: #eee;
+}
+
+body.dark .board-table tr:hover {
+  background-color: #444;
+}
+
+/* ✅ 각 열별 너비 설정 */
+.board-table th:nth-child(1),
+.board-table td:nth-child(1) {
+  width: 4%; /* 번호 */
+}
+
+.board-table th:nth-child(2),
+.board-table td:nth-child(2) {
+  width: 80%; /* 제목 */
+}
+
+.board-table th:nth-child(3),
+.board-table td:nth-child(3) {
+  width: 7%; /* 작성자 */
+}
+
+.board-table th:nth-child(4),
+.board-table td:nth-child(4) {
+  width: 11%; /* 작성일 */
+}
+
+.board-table th:nth-child(5),
+.board-table td:nth-child(5) {
+  width: 5%; /* 조회수 */
+}
+
+/* 다크모드 대응 */
+body.dark .board-search select,
+body.dark .board-search input {
+  background-color: #333;
+  color: #f0f0f0;
+  border: 1px solid #555;
+}
+
+body.dark .board-search button {
+  background-color: #555;
+}
+
+body.dark .board-search button:hover {
+  background-color: #666;
+}

@@ -21,6 +21,11 @@
   height: 40px;
 }
 
+.logo a {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* 중앙 메뉴 (데스크탑 전용) */
 .header-center {
   flex: 1;
@@ -63,7 +68,7 @@
 
 .nav-menu li a:hover {
   color: #000000;
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
 .nav-menu li a:hover::after {

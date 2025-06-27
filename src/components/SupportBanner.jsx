@@ -5,12 +5,14 @@ import poster1 from "../assets/poster1.png";
 import poster2 from "../assets/poster2.png";
 import poster3 from "../assets/poster3.png";
 import poster4 from "../assets/poster4.png";
+import poster5 from "../assets/poster5.png";
 
 const bannerItems = [
   { image: poster1, link: "https://example.com/1" },
   { image: poster2, link: "https://example.com/2" },
   { image: poster3, link: "https://example.com/3" },
   { image: poster4, link: "https://example.com/4" },
+  { image: poster5, link: "https://example.com/5" },
 ];
 
 function SupportBanner() {
@@ -23,7 +25,7 @@ function SupportBanner() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => prevIndex + 1);
-    }, 3000);
+    }, 2600);
     return () => clearInterval(interval);
   }, []);
 

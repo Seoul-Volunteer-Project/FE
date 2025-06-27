@@ -1,0 +1,25 @@
+.community-tabs {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.community-tabs button {
+  padding: 0.5rem 1rem;
+  border: 1px solid #007acc;
+  background: white;
+  color: #007acc;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.community-tabs button.active,
+.community-tabs button:hover {
+  background-color: #007acc;
+  color: white;
+}
+
+.community-content {
+  padding: 1rem;
+}
