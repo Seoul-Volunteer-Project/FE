@@ -15,7 +15,7 @@
 /* 로고 (헤더 좌측) */
 .logo {
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   display: flex;
   align-items: center;
   height: 40px;
@@ -50,34 +50,106 @@
   text-decoration: none;
   color: #333;
   font-weight: 500;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   display: inline-block;
   transition: color 0.3s, transform 0.3s;
 }
 
-.nav-menu li a::after {
+/* ===== 상단 메뉴바 메인 항목 hover 효과 (파란 밑줄 + 확대) ===== */
+.nav-menu > li > a:hover {
+  color: #000000;
+  transform: scale(1.1);
+}
+
+.nav-menu > li > a::after {
   content: "";
   position: absolute;
   left: 0;
   bottom: -4px;
   width: 0;
-  height: 2px;
+  height: 3px;
   background-color: #007acc;
   transition: width 0.3s;
 }
 
-.nav-menu li a:hover {
-  color: #000000;
-  transform: scale(1.1);
-}
-
-.nav-menu li a:hover::after {
+.nav-menu > li:hover > a::after {
   width: 100%;
 }
 
+/* 드롭다운 기본 숨김 상태 */
+.nav-menu li .dropdown {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 1s ease, opacity 0.3s ease;
+  position: absolute;
+  top: 140%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  min-width: 150px;
+  padding: 0;
+  z-index: 300;
+}
+
+/* 드롭다운 항목들 */
+.nav-menu li .dropdown li {
+  padding: 0.5rem 1rem;
+  white-space: nowrap;
+  text-align: center;
+}
+
+/* 메뉴 hover 시 드롭다운 열기 (슬라이드 효과) */
+.nav-menu li:hover .dropdown {
+  max-height: 500px; /* ✅ 최대 펼칠 높이 (충분히 크게 설정) */
+  opacity: 1;
+  padding: 0.5rem 0; /* ✅ 펼칠 때 여백 추가 */
+  transform: translateX(-50%) translateY(5px); /* ✅ 호버 시 약간 더 아래로 부드럽게 */
+}
+
+/* ===== 하위 드롭다운 메뉴 항목들 hover 효과 (밑줄 ❌, 확대만 O) ===== */
+.nav-menu li .dropdown li a {
+  text-decoration: none;
+  color: #000000;
+  font-size: 1rem;
+  font-weight: 450;
+  display: block;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.nav-menu li .dropdown li a:hover {
+  transform: scale(1.05); /* ✅ 살짝 확대만 */
+  color: #007acc;
+}
+
 /* 다크모드 대응 */
+body.dark .nav-menu li a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 1.2rem;
+  display: inline-block;
+  transition: color 0.3s, transform 0.3s;
+}
+
 body.dark .nav-menu li a:hover {
   color: #ffffff;
+  transform: scale(1.05);
+}
+
+body.dark .nav-menu li .dropdown {
+  background-color: #333;
+}
+
+body.dark .nav-menu li .dropdown li a {
+  color: #f0f0f0;
+  font-size: 0.95rem;
+}
+
+body.dark .nav-menu li .dropdown li a:hover {
+  color: #007acc;
   transform: scale(1.05);
 }
 

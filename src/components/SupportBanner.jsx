@@ -25,7 +25,7 @@ function SupportBanner() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => prevIndex + 1);
-    }, 2600);
+    }, 2400);
     return () => clearInterval(interval);
   }, []);
 

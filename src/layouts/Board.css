@@ -1,5 +1,5 @@
 .board-page {
-  padding: 1rem;
+  padding: 0 20px;
 }
 
 .board-title {
@@ -8,6 +8,7 @@
   text-align: left;
   padding-bottom: 0.8rem;
   border-bottom: 4px solid #000000; /* ✅ 구분선 색상과 두께 */
+  margin-top: 0;
   margin-bottom: 3rem;
   display: inline-block;
 }
@@ -126,12 +127,12 @@ body.dark .board-table tr:hover {
 
 .board-table th:nth-child(4),
 .board-table td:nth-child(4) {
-  width: 11%; /* 작성일 */
+  width: 12%; /* 작성일 */
 }
 
 .board-table th:nth-child(5),
 .board-table td:nth-child(5) {
-  width: 5%; /* 조회수 */
+  width: 6%; /* 조회수 */
 }
 
 /* 다크모드 대응 */

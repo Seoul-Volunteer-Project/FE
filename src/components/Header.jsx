@@ -36,20 +36,58 @@ function Header() {
           <a href="/"> Youth Care</a>
         </div>
 
-        {/* 중앙 메뉴 (데스크탑) */}
+        {/* 중앙 메뉴 */}
         <nav className="header-center">
           <ul className="nav-menu">
             <li>
-              <a href="#intro">소개</a>
+              <a href="/about/aboutIntro">소개</a>
+              <ul className="dropdown">
+                <li>
+                  <a href="/about/aboutIntro">기관 소개</a>
+                </li>
+                <li>
+                  <a href="/about/aboutGoal">함께하기</a>
+                </li>
+              </ul>
             </li>
             <li>
               <a href="#service">청년정보</a>
+              <ul className="dropdown">
+                <li>
+                  <a href="#housing">주거 정보</a>
+                </li>
+                <li>
+                  <a href="#education">교육 정보</a>
+                </li>
+                <li>
+                  <a href="#finance">금융 정보</a>
+                </li>
+                <li>
+                  <a href="#policy">정책 정보</a>
+                </li>
+              </ul>
             </li>
             <li>
-              <a href="/support">지원사업</a>
+              <a href="/support/all">지원사업</a>
+              <ul className="dropdown">
+                <li>
+                  <a href="/support/all">전체 사업</a>
+                </li>
+                <li>
+                  <a href="/support/custom">맞춤 사업 찾기</a>
+                </li>
+              </ul>
             </li>
             <li>
-              <a href="/community">소통공간</a>
+              <a href="/community/board">소통공간</a>
+              <ul className="dropdown">
+                <li>
+                  <a href="/community/board">게시판</a>
+                </li>
+                <li>
+                  <a href="/community/gallery">사진첩</a>
+                </li>
+              </ul>
             </li>
           </ul>
         </nav>

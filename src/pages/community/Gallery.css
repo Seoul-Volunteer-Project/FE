@@ -1,5 +1,5 @@
 .gallery-page {
-  padding: 1rem;
+  padding: 0 20px;
 }
 
 .gallery-title {
@@ -8,6 +8,7 @@
   text-align: left;
   padding-bottom: 0.8rem;
   border-bottom: 4px solid #000000;
+  margin-top: 0;
   margin-bottom: 7rem;
   display: inline-block;
 }

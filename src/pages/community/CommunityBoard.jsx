@@ -1,14 +1,14 @@
 import { useState } from "react";
-import "./Board.css";
+import "../../layouts/Board.css";
 
-function Board() {
+function CommunityBoard() {
   const [searchType, setSearchType] = useState("title");
   const [searchKeyword, setSearchKeyword] = useState("");
 
   const dummyPosts = [
     {
       id: 1,
-      title: "첫 번째 글sdfsfdsffffffffffffffffffffffffffffff",
+      title: "게시판 첫번째 글입니다.",
       author: "관리자",
       date: "2025-06-26",
       views: 15,
@@ -96,4 +96,4 @@ function Board() {
   );
 }
 
-export default Board;
+export default CommunityBoard;

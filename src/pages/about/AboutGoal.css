@@ -1,0 +1,87 @@
+.goal-container {
+  max-width: 100%;
+  margin: 0;
+  padding: 0px 20px;
+  font-family: "Pretendard", sans-serif;
+  color: #333;
+}
+
+.goal-banner-wrapper {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.goal-banner {
+  width: 100%;
+  max-height: 250px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.goal-title {
+  font-size: 2.5rem;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+.goal-intro {
+  font-size: 1rem;
+  color: #646464;
+  line-height: 1;
+  /* margin-bottom: 50px; */
+  text-align: center;
+}
+
+.goal-section {
+  margin-bottom: 30px;
+}
+
+.goal-subtitle {
+  font-size: 1.5rem;
+  color: #000000;
+  margin-top: 60px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.goal-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+  max-width: 400px;
+  margin: 16px auto 0; /* 가운데 정렬 */
+}
+
+.goal-form label {
+  font-weight: 600;
+  color: #2a5d9f;
+}
+
+.goal-form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.goal-form input:focus {
+  outline: none;
+  border-color: #2a5d9f;
+  box-shadow: 0 0 0 2px rgba(42, 93, 159, 0.2);
+}
+
+/* Optional submit button */
+
+.goal-form button {
+  padding: 10px;
+  background-color: #2a5d9f;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.goal-form button:hover {
+  background-color: #1e497e;
+}

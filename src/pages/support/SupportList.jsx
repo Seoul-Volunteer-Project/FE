@@ -1,7 +1,7 @@
 import { useState } from "react";
-import "../community/Board.css"; // ✅ 기존 Board.css 재사용
+import "../../layouts/Board.css";
 
-function SupportBoard() {
+function SupportList() {
   const [searchType, setSearchType] = useState("title");
   const [searchKeyword, setSearchKeyword] = useState("");
 
@@ -97,4 +97,4 @@ function SupportBoard() {
   );
 }
 
-export default SupportBoard;
+export default SupportList;
