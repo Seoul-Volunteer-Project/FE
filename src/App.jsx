@@ -11,6 +11,8 @@ import SupportList from "./pages/support/SupportList";
 import CustomSearch from "./pages/support/CustomSearch";
 import CommunityBoard from "./pages/community/CommunityBoard";
 import Gallery from "./pages/community/Gallery";
+import LoginPage from "./pages/user/LoginPage";
+import SignupPage from "./pages/user/SignupPage";
 
 // 메뉴 정의
 const aboutMenu = [
@@ -66,6 +68,10 @@ function App() {
               <Route path="/community/board" element={<CommunityBoard />} />
               <Route path="/community/gallery" element={<Gallery />} />
             </Route>
+
+            {/* 로그인 페이지 라우팅 */}
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<SignupPage />} />
           </Routes>
         </main>
 

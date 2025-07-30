@@ -11,7 +11,7 @@ function CustomSearch() {
           <p>지금 자신에게 필요한 사업을 찾을 수 있습니다.</p>
 
           <h2 className="custom-section-title">서비스 준비 중</h2>
-          <p>빠른 시일 내에 구현 예정.</p>
+          <p>Loading...</p>
 
           <h2 className="custom-section-title">탐색</h2>
           <ul className="custom-list">

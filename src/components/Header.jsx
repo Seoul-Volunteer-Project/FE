@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Header.css";
 
 // 아이콘 이미지 경로
@@ -11,22 +12,23 @@ import iconClose from "../assets/close.png";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const closeMenu = () => setIsMenuOpen(false);
+  const navigate = useNavigate();
+
+  // const [isDarkMode, setIsDarkMode] = useState(false);
 
   // 다크모드 전환 시 body 클래스 토글
-  useEffect(() => {
-    if (isDarkMode) {
-      document.body.classList.add("dark");
-    } else {
-      document.body.classList.remove("dark");
-    }
-  }, [isDarkMode]);
+  // useEffect(() => {
+  //   if (isDarkMode) {
+  //     document.body.classList.add("dark");
+  //   } else {
+  //     document.body.classList.remove("dark");
+  //   }
+  // }, [isDarkMode]);
 
-  const closeMenu = () => setIsMenuOpen(false);
-
-  const toggleDarkMode = () => {
-    setIsDarkMode((prev) => !prev);
-  };
+  // const toggleDarkMode = () => {
+  //   setIsDarkMode((prev) => !prev);
+  // };
 
   return (
     <>
@@ -94,18 +96,27 @@ function Header() {
 
         {/* 우측 아이콘 영역 */}
         <div className="header-right">
-          {/* 항상 보이는 검색 버튼 */}
-          <button className="icon-button">
-            <img src={iconSearch} alt="search" />
-          </button>
-          {/* 데스크톱일 때만 보이는 두 버튼 */}
-          <div className="desktop-icons">
-            <button className="icon-button">
+          <div className="search-container">
+            <input
+              type="text"
+              placeholder="검색어를 입력하세요"
+              className="search-input"
+            />
+            <button className="icon-button search-icon">
+              <img src={iconSearch} alt="search" />
+            </button>
+          </div>
+
+          <div className="user-container">
+            <button
+              className="icon-button user-icon"
+              onClick={() => navigate("/login")} // 로그인 페이지 이동
+            >
               <img src={iconUser} alt="profile" />
             </button>
-            <button className="icon-button" onClick={toggleDarkMode}>
+            {/* <button className="icon-button" onClick={toggleDarkMode}>
               <img src={isDarkMode ? iconSun : iconMoon} alt="theme toggle" />
-            </button>
+            </button> */}
           </div>
 
           {/* 햄버거 버튼 (모바일용) */}
@@ -129,9 +140,9 @@ function Header() {
             <button className="icon-button">
               <img src={iconUser} alt="profile" />
             </button>
-            <button className="icon-button" onClick={toggleDarkMode}>
+            {/* <button className="icon-button" onClick={toggleDarkMode}>
               <img src={isDarkMode ? iconSun : iconMoon} alt="theme toggle" />
-            </button>
+            </button> */}
             <button className="icon-button" onClick={closeMenu}>
               <img src={iconClose} alt="close" />
             </button>

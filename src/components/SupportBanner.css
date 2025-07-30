@@ -50,7 +50,7 @@
 /* 오른쪽 : 맞춤 지원사업 찾기 영역 */
 .banner-right {
   flex: 1;
-  background-color: #2b2b2c;
+  background: linear-gradient(0deg, #b6d8ff, #d6ecff);
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -63,24 +63,25 @@
   font-size: 2rem;
   line-height: 1.8;
   margin-bottom: 1.7rem;
-  color: #ffffff;
+  color: #09275e;
   max-width: 350px;
 }
 
 .banner-right h2 {
   font-size: 1.2rem;
+  font-weight: 500;
   line-height: 1.8;
   margin-bottom: 1.7rem;
-  color: #ffffff;
+  color: #09275e;
   max-width: 350px;
 }
 
 .search-button {
-  background-color: #ffffff;
-  color: rgb(0, 0, 0);
+  background-color: #2b72de;
+  color: rgb(255, 255, 255);
   border: none;
-  padding: 0.8rem 1.6rem;
-  border-radius: 10px;
+  padding: 1rem 1rem;
+  border-radius: 80px;
   cursor: pointer;
   font-weight: 600;
   font-size: 1.3rem;
@@ -88,7 +89,7 @@
 }
 
 .search-button:hover {
-  background-color: #f4f4f4;
+  background-color: #123492;
   transform: scale(1.05);
 }
 
@@ -104,11 +105,11 @@ body.dark .banner-right {
 }
 
 body.dark .search-button {
-  background-color: #ffffff;
+  background-color: #000000;
 }
 
 body.dark .search-button:hover {
-  background-color: #f0f8aa;
+  background-color: hsl(241, 100%, 61%);
 }
 
 body.dark .banner-item img {

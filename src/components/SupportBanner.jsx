@@ -82,10 +82,10 @@ function SupportBanner() {
           미래를 응원합니다
         </h1>
         <h2>
-          지금 바로 여러분에게 꼭 맞는 지원사업을 <br />
+          지금 바로 여러분에게 꼭 맞는 지원 사업을 <br />
           찾아보세요!
         </h2>
-        <button className="search-button">맞춤 정책 찾기</button>
+        <button className="search-button">맞춤 사업 찾기</button>
       </div>
     </div>
   );

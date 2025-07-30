@@ -1,9 +1,10 @@
 .subtitle {
   text-align: center;
-  color: #666;
-  margin-top: 5rem;
+  color: #000000;
+  margin-top: 4rem;
   margin-bottom: 1rem;
-  font-size: 1.1rem;
+  font-size: 1.6rem;
+  font-weight: 500;
 }
 
 .service-grid {
@@ -12,4 +13,5 @@
   gap: 4rem;
   justify-content: center;
   padding: 1rem;
+  width: 100%;
 }
