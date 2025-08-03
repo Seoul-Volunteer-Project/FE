@@ -62,7 +62,7 @@ function Header() {
                   <Link to="/youthInfo/educationBoard">교육 정보</Link>
                 </li>
                 <li>
-                  <Link to="/youthInfo/FfnanceBoard">금융 정보</Link>
+                  <Link to="/youthInfo/financeBoard">금융 정보</Link>
                 </li>
                 <li>
                   <Link to="/youthInfo/policyBoard">정책 정보</Link>
