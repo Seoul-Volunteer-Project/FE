@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import "./SupportBanner.css";
+import { useNavigate } from "react-router-dom";
 
 import poster1 from "../assets/poster1.png";
 import poster2 from "../assets/poster2.png";
@@ -19,6 +20,7 @@ function SupportBanner() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransition, setIsTransition] = useState(true);
   const slideRef = useRef(null);
+  const navigate = useNavigate();
 
   const totalItems = bannerItems.length * 2; // 원본 + 복제
 
@@ -85,7 +87,12 @@ function SupportBanner() {
           지금 바로 여러분에게 꼭 맞는 지원 사업을 <br />
           찾아보세요!
         </h2>
-        <button className="search-button">맞춤 사업 찾기</button>
+        <button
+          className="search-button"
+          onClick={() => navigate("/support/custom")}
+        >
+          맞춤 사업 찾기
+        </button>
       </div>
     </div>
   );
