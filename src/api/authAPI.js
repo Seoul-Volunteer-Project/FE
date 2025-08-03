@@ -2,7 +2,7 @@ import axios from "axios";
 
 const BASE_URL = "https://youthcare.site/api/user";
 
-export const signup = async ({ email, password }) => {
+export const signup = async (formData) => {
   const response = await axios.post(`${BASE_URL}/register`, formData, {
     withCredentials: true, // 세션 쿠키 주고받기 위해 필요
   });
