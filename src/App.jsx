@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import GlobalSidebarLayout from "./layouts/GlobalSidebarLayout";
+import ScrollToTop from "./components/ScrollToTop";
 import AboutIntro from "./pages/about/AboutIntro";
 import AboutGoal from "./pages/about/AboutGoal";
 import HousingBoard from "./pages/youthInfo/HousingBoard";
@@ -44,9 +45,9 @@ const communityMenu = [
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="wrapper">
         <Header />
-
         <main className="main-content">
           <Routes>
             <Route path="/" element={<Home />} />
