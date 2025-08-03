@@ -27,4 +27,7 @@
 .main {
   flex: 1;
   padding-left: 40px;
+  padding: 2rem;
+  min-height: 70vh;
+  overflow: hidden;
 }

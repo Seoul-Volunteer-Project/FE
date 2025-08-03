@@ -69,7 +69,7 @@ function App() {
               <Route path="/community/gallery" element={<Gallery />} />
             </Route>
 
-            {/* 로그인 페이지 라우팅 */}
+            {/* Auth 페이지 라우팅 */}
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignupPage />} />
           </Routes>

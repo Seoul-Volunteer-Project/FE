@@ -1,12 +1,13 @@
 import "./SignupPage.css";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { signup } from "../../api/authAPI";
 
 function SignupPage() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
-    username: "",
+    name: "",
     password: "",
     birthdate: "",
   });
@@ -23,17 +24,22 @@ function SignupPage() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const { email, username, password, birthdate } = formData;
+    const { email, name, password, birthdate } = formData;
 
-    if (!email || !username || !password || !birthdate) {
+    if (!email || !name || !password || !birthdate) {
       alert("모든 항목을 입력해 주세요.");
       return;
     }
 
-    // TODO: API 요청
-    console.log("회원가입 정보:", formData);
+    try {
+      await signup({ email, name, password, birthdate });
+      alert("회원가입이 완료되었습니다.");
+      navigate("/login");
+    } catch (error) {
+      alert("회원가입 실패: " + (error.response?.data?.message || "서버 오류"));
+    }
   };
 
   return (
@@ -50,10 +56,10 @@ function SignupPage() {
         />
         <input
           type="text"
-          name="username"
-          placeholder="아이디"
+          name="name"
+          placeholder="이름"
           className="signup-input"
-          value={formData.username}
+          value={formData.name}
           onChange={handleChange}
         />
         <input

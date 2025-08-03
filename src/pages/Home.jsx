@@ -2,6 +2,7 @@
 import SupportBanner from "../components/SupportBanner";
 import ServiceCard from "../components/ServiceCard";
 import "./Home.css";
+import { motion } from "framer-motion";
 
 const services = [
   {
@@ -29,13 +30,51 @@ const services = [
 function Home() {
   return (
     <main className="home-container">
-      <SupportBanner />
-      <p className="subtitle">어떤 정보를 찾고 계시나요?</p>
-      <div className="service-grid">
+      {/* SupportBanner 애니메이션 */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
+      >
+        <SupportBanner />
+      </motion.div>
+
+      {/* 부제목 애니메이션 */}
+      <motion.p
+        className="subtitle"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.2, duration: 0.3 }}
+      >
+        어떤 정보를 찾고 계시나요?
+      </motion.p>
+
+      {/* ServiceCard 그리드에 stagger 애니메이션 */}
+      <motion.div
+        className="service-grid"
+        initial="hidden"
+        animate="visible"
+        variants={{
+          visible: {
+            transition: {
+              staggerChildren: 0.1,
+            },
+          },
+        }}
+      >
         {services.map((service, index) => (
-          <ServiceCard key={index} {...service} />
+          <motion.div
+            key={index}
+            variants={{
+              hidden: { opacity: 0, y: 10 },
+              visible: { opacity: 1, y: 0 },
+            }}
+            transition={{ duration: 0.3 }}
+          >
+            <ServiceCard {...service} />
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </main>
   );
 }

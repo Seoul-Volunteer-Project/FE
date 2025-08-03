@@ -1,18 +1,32 @@
 import "./LoginPage.css";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { login, getMyInfo, logout } from "../../api/authAPI";
 
 function LoginPage() {
   const navigate = useNavigate();
-
-  const [formData, setFormData] = useState({
-    username: "",
-    password: "",
-  });
+  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [isLoggedIn, setIsLoggedIn] = useState(null);
+  const [userInfo, setUserInfo] = useState(null);
 
   useEffect(() => {
     document.body.classList.add("fade-in");
     return () => document.body.classList.remove("fade-in");
+  }, []);
+
+  // 로그인 상태 확인
+  useEffect(() => {
+    const checkLogin = async () => {
+      try {
+        const user = await getMyInfo();
+        setIsLoggedIn(true);
+        setUserInfo(user);
+      } catch {
+        setIsLoggedIn(false);
+        setUserInfo(null);
+      }
+    };
+    checkLogin();
   }, []);
 
   const handleChange = (e) => {
@@ -22,29 +36,62 @@ function LoginPage() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    const { username, password } = formData;
-
-    if (!username || !password) {
-      alert("아이디와 비밀번호를 모두 입력해 주세요.");
+    const { email, password } = formData;
+    if (!email || !password) {
+      alert("이메일과 비밀번호를 모두 입력해 주세요.");
       return;
     }
-
-    // TODO: API 로그인 요청
-    console.log("로그인 정보:", formData);
+    try {
+      await login({ email, password });
+      // alert("로그인 성공");
+      navigate("/"); // 홈으로 이동
+    } catch (error) {
+      alert("로그인 실패: " + (error.response?.data || "서버 오류"));
+    }
   };
 
+  const handleLogout = async () => {
+    try {
+      await logout();
+      // alert("로그아웃 되었습니다.");
+      setIsLoggedIn(false);
+      setUserInfo(null);
+    } catch (error) {
+      alert("로그아웃 실패");
+    }
+  };
+
+  // ✅ 로딩 중 상태
+  if (isLoggedIn === null) {
+    return <div className="login-container">로딩 중...</div>;
+  }
+
+  // ✅ 로그인된 경우
+  if (isLoggedIn) {
+    return (
+      <div className="login-container">
+        <h2 className="login-title">안녕하세요, {userInfo?.name}님!</h2>
+        <button onClick={handleLogout} className="login-button">
+          로그아웃
+        </button>
+      </div>
+    );
+  }
+
+  // ✅ 로그인되지 않은 경우 (기존 폼)
   return (
     <div className="login-container">
       <h2 className="login-title">로그인</h2>
-      <form className="login-form" onSubmit={handleSubmit}>
+
+      <form className="login-form" onSubmit={handleLogin}>
         <input
           type="text"
-          name="username"
-          placeholder="아이디"
+          name="email"
+          placeholder="이메일"
           className="login-input"
-          value={formData.username}
+          value={formData.email}
           onChange={handleChange}
         />
         <input

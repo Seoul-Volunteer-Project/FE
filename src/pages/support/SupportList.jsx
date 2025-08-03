@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "../../layouts/Board.css";
+import { motion } from "framer-motion";
 
 function SupportList() {
   const [searchType, setSearchType] = useState("title");
@@ -39,61 +40,67 @@ function SupportList() {
   });
 
   return (
-    <div className="board-page">
-      {/* 페이지 제목 */}
-      <h1 className="board-title">지원사업</h1>
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
+    >
+      <div className="board-page">
+        {/* 페이지 제목 */}
+        <h1 className="board-title">지원사업</h1>
 
-      {/* 검색 필터 */}
-      <div className="board-search">
-        <select
-          value={searchType}
-          onChange={(e) => setSearchType(e.target.value)}
-        >
-          <option value="title">제목</option>
-          <option value="author">작성자</option>
-        </select>
+        {/* 검색 필터 */}
+        <div className="board-search">
+          <select
+            value={searchType}
+            onChange={(e) => setSearchType(e.target.value)}
+          >
+            <option value="title">제목</option>
+            <option value="author">작성자</option>
+          </select>
 
-        <div className="search-input-group">
-          <input
-            type="text"
-            placeholder="검색어 입력"
-            value={searchKeyword}
-            onChange={(e) => setSearchKeyword(e.target.value)}
-          />
-          <button>검색</button>
+          <div className="search-input-group">
+            <input
+              type="text"
+              placeholder="검색어 입력"
+              value={searchKeyword}
+              onChange={(e) => setSearchKeyword(e.target.value)}
+            />
+            <button>검색</button>
+          </div>
         </div>
-      </div>
 
-      {/* 게시판 테이블 */}
-      <table className="board-table">
-        <thead>
-          <tr>
-            <th>번호</th>
-            <th>제목</th>
-            <th>작성자</th>
-            <th>작성일</th>
-            <th>조회수</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredPosts.length > 0 ? (
-            filteredPosts.map((post) => (
-              <tr key={post.id}>
-                <td>{post.id}</td>
-                <td>{post.title}</td>
-                <td>{post.author}</td>
-                <td>{post.date}</td>
-                <td>{post.views}</td>
-              </tr>
-            ))
-          ) : (
+        {/* 게시판 테이블 */}
+        <table className="board-table">
+          <thead>
             <tr>
-              <td colSpan="5">검색 결과가 없습니다.</td>
+              <th>번호</th>
+              <th>제목</th>
+              <th>작성자</th>
+              <th>작성일</th>
+              <th>조회수</th>
             </tr>
-          )}
-        </tbody>
-      </table>
-    </div>
+          </thead>
+          <tbody>
+            {filteredPosts.length > 0 ? (
+              filteredPosts.map((post) => (
+                <tr key={post.id}>
+                  <td>{post.id}</td>
+                  <td>{post.title}</td>
+                  <td>{post.author}</td>
+                  <td>{post.date}</td>
+                  <td>{post.views}</td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="5">검색 결과가 없습니다.</td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+    </motion.div>
   );
 }
 

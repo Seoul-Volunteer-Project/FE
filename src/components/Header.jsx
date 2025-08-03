@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./Header.css";
 
 // 아이콘 이미지 경로
@@ -42,52 +42,52 @@ function Header() {
         <nav className="header-center">
           <ul className="nav-menu">
             <li>
-              <a href="/about/aboutIntro">소개</a>
+              <Link to="/about/aboutIntro">소개</Link>
               <ul className="dropdown">
                 <li>
-                  <a href="/about/aboutIntro">기관 소개</a>
+                  <Link to="/about/aboutIntro">기관 소개</Link>
                 </li>
                 <li>
-                  <a href="/about/aboutGoal">함께하기</a>
+                  <Link to="/about/aboutGoal">함께하기</Link>
                 </li>
               </ul>
             </li>
             <li>
-              <a href="#service">청년정보</a>
+              <Link to="#service">청년정보</Link>
               <ul className="dropdown">
                 <li>
-                  <a href="#housing">주거 정보</a>
+                  <Link to="#housing">주거 정보</Link>
                 </li>
                 <li>
-                  <a href="#education">교육 정보</a>
+                  <Link to="#education">교육 정보</Link>
                 </li>
                 <li>
-                  <a href="#finance">금융 정보</a>
+                  <Link to="#finance">금융 정보</Link>
                 </li>
                 <li>
-                  <a href="#policy">정책 정보</a>
+                  <Link to="#policy">정책 정보</Link>
                 </li>
               </ul>
             </li>
             <li>
-              <a href="/support/all">지원사업</a>
+              <Link to="/support/all">지원사업</Link>
               <ul className="dropdown">
                 <li>
-                  <a href="/support/all">전체 사업</a>
+                  <Link to="/support/all">전체 사업</Link>
                 </li>
                 <li>
-                  <a href="/support/custom">맞춤 사업 찾기</a>
+                  <Link to="/support/custom">맞춤 사업 찾기</Link>
                 </li>
               </ul>
             </li>
             <li>
-              <a href="/community/board">소통공간</a>
+              <Link to="/community/board">소통공간</Link>
               <ul className="dropdown">
                 <li>
-                  <a href="/community/board">게시판</a>
+                  <Link to="/community/board">게시판</Link>
                 </li>
                 <li>
-                  <a href="/community/gallery">사진첩</a>
+                  <Link to="/community/gallery">사진첩</Link>
                 </li>
               </ul>
             </li>

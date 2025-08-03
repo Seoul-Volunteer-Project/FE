@@ -1,4 +1,5 @@
 import "./Gallery.css";
+import { motion } from "framer-motion";
 
 // 더미 사진 데이터
 const dummyImages = [
@@ -12,23 +13,29 @@ const dummyImages = [
 
 function Gallery() {
   return (
-    <div className="gallery-page">
-      {/* 제목 */}
-      <h1 className="gallery-title">활동 사진첩</h1>
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
+    >
+      <div className="gallery-page">
+        {/* 제목 */}
+        <h1 className="gallery-title">활동 사진첩</h1>
 
-      {/* 구분선 */}
-      <div className="gallery-divider"></div>
+        {/* 구분선 */}
+        <div className="gallery-divider"></div>
 
-      {/* 앨범 그리드 */}
-      <div className="gallery-grid">
-        {dummyImages.map((item) => (
-          <div key={item.id} className="gallery-item">
-            <img src={item.src} alt={item.title} />
-            <div className="gallery-caption">{item.title}</div>
-          </div>
-        ))}
+        {/* 앨범 그리드 */}
+        <div className="gallery-grid">
+          {dummyImages.map((item) => (
+            <div key={item.id} className="gallery-item">
+              <img src={item.src} alt={item.title} />
+              <div className="gallery-caption">{item.title}</div>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
