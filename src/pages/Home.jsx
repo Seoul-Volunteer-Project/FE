@@ -3,31 +3,38 @@ import SupportBanner from "../components/SupportBanner";
 import ServiceCard from "../components/ServiceCard";
 import "./Home.css";
 import { motion } from "framer-motion";
-
-const services = [
-  {
-    title: "안정된 보금자리, 주거지원",
-    emoji: "🏠",
-    backgroundColor: "#e6f0ff",
-  },
-  {
-    title: "청년 금융·저축 프로그램",
-    emoji: "💰",
-    backgroundColor: "#e6fff0",
-  },
-  {
-    title: "진로 탐색과 역량 강화",
-    emoji: "🎓",
-    backgroundColor: "#ffecec",
-  },
-  {
-    title: "다양한 청년 맞춤 정책",
-    emoji: "📄",
-    backgroundColor: "#fff4e1",
-  },
-];
+import { useNavigate } from "react-router-dom";
 
 function Home() {
+  const navigate = useNavigate();
+
+  const services = [
+    {
+      title: "안정된 보금자리, 주거지원",
+      emoji: "🏠",
+      backgroundColor: "#e6f0ff",
+      path: "/youthInfo/housingBoard",
+    },
+    {
+      title: "청년 금융·저축 프로그램",
+      emoji: "💰",
+      backgroundColor: "#e6fff0",
+      path: "/youthInfo/financeBoard",
+    },
+    {
+      title: "진로 탐색과 역량 강화",
+      emoji: "🎓",
+      backgroundColor: "#ffecec",
+      path: "/youthInfo/educationBoard",
+    },
+    {
+      title: "다양한 청년 맞춤 정책",
+      emoji: "📄",
+      backgroundColor: "#fff4e1",
+      path: "/youthInfo/policyBoard",
+    },
+  ];
+
   return (
     <main className="home-container">
       {/* SupportBanner 애니메이션 */}
@@ -71,7 +78,7 @@ function Home() {
             }}
             transition={{ duration: 0.3 }}
           >
-            <ServiceCard {...service} />
+            <ServiceCard {...service} onClick={() => navigate(service.path)} />
           </motion.div>
         ))}
       </motion.div>

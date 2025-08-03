@@ -53,19 +53,19 @@ function Header() {
               </ul>
             </li>
             <li>
-              <Link to="#service">청년정보</Link>
+              <Link to="/youthInfo/housingBoard">청년정보</Link>
               <ul className="dropdown">
                 <li>
-                  <Link to="#housing">주거 정보</Link>
+                  <Link to="/youthInfo/housingBoard">주거 정보</Link>
                 </li>
                 <li>
-                  <Link to="#education">교육 정보</Link>
+                  <Link to="/youthInfo/educationBoard">교육 정보</Link>
                 </li>
                 <li>
-                  <Link to="#finance">금융 정보</Link>
+                  <Link to="/youthInfo/FfnanceBoard">금융 정보</Link>
                 </li>
                 <li>
-                  <Link to="#policy">정책 정보</Link>
+                  <Link to="/youthInfo/policyBoard">정책 정보</Link>
                 </li>
               </ul>
             </li>

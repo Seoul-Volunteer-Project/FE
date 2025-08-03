@@ -27,7 +27,7 @@
 
 .goal-intro {
   font-size: 1rem;
-  color: #646464;
+  color: #858585;
   line-height: 1;
   /* margin-bottom: 50px; */
   text-align: center;
@@ -51,19 +51,21 @@
   gap: 16px;
   margin-top: 16px;
   max-width: 400px;
-  margin: 16px auto 0; /* 가운데 정렬 */
+  /* margin: 16px auto 0; 가운데 정렬 */
+  margin-left: 15px;
 }
 
 .goal-form label {
   font-weight: 600;
-  color: #2a5d9f;
+  color: #575757;
 }
 
 .goal-form input {
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  padding-left: 20px;
 }
 
 .goal-form input:focus {
@@ -75,13 +77,18 @@
 /* Optional submit button */
 
 .goal-form button {
+  font-size: 1rem;
+  font-weight: 600;
   padding: 10px;
-  background-color: #2a5d9f;
+  margin-top: 15px;
+  background-color: #4192fc;
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 20px;
   cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.2s ease;
 }
 .goal-form button:hover {
-  background-color: #1e497e;
+  background-color: #1963b7;
+  transform: translateY(-2px);
 }

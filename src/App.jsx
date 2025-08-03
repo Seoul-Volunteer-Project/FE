@@ -7,6 +7,10 @@ import Home from "./pages/Home";
 import GlobalSidebarLayout from "./layouts/GlobalSidebarLayout";
 import AboutIntro from "./pages/about/AboutIntro";
 import AboutGoal from "./pages/about/AboutGoal";
+import HousingBoard from "./pages/youthInfo/HousingBoard";
+import EducationBoard from "./pages/youthInfo/EducationBoard";
+import FinanceBoard from "./pages/youthInfo/FinanceBoard";
+import PolicyBoard from "./pages/youthInfo/PolicyBoard";
 import SupportList from "./pages/support/SupportList";
 import CustomSearch from "./pages/support/CustomSearch";
 import CommunityBoard from "./pages/community/CommunityBoard";
@@ -18,6 +22,13 @@ import SignupPage from "./pages/user/SignupPage";
 const aboutMenu = [
   { label: "기관 소개", path: "/about/aboutIntro" },
   { label: "함께하기", path: "/about/aboutGoal" },
+];
+
+const infoMenu = [
+  { label: "주거 정보", path: "/youthInfo/HousingBoard" },
+  { label: "교육 정보", path: "/youthInfo/EducationBoard" },
+  { label: "금융 정보", path: "/youthInfo/FinanceBoard" },
+  { label: "정책 정보", path: "/youthInfo/PolicyBoard" },
 ];
 
 const supportMenu = [
@@ -48,6 +59,27 @@ function App() {
               <Route index element={<AboutIntro />} />
               <Route path="/about/aboutIntro" element={<AboutIntro />} />
               <Route path="/about/aboutGoal" element={<AboutGoal />} />
+            </Route>
+
+            {/* 청년정보 페이지 라우팅 */}
+            <Route
+              path="/youthInfo"
+              element={<GlobalSidebarLayout menuItems={infoMenu} />}
+            >
+              <Route index element={<HousingBoard />} />
+              <Route
+                path="/youthInfo/housingBoard"
+                element={<HousingBoard />}
+              />
+              <Route
+                path="/youthInfo/educationBoard"
+                element={<EducationBoard />}
+              />
+              <Route
+                path="/youthInfo/financeBoard"
+                element={<FinanceBoard />}
+              />
+              <Route path="/youthInfo/policyBoard" element={<PolicyBoard />} />
             </Route>
 
             {/* 지원사업 페이지 라우팅 */}
