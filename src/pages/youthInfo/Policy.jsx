@@ -49,7 +49,7 @@ function PolicyBoard() {
             <div className="gallery-write-btn-container">
               <button
                 className="gallery-write-btn"
-                onClick={() => navigate("create")}
+                onClick={() => navigate("post")}
               >
                 작성하기
               </button>

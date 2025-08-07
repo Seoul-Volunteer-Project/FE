@@ -113,7 +113,7 @@ function SupportList() {
             <div className="board-write-btn-container">
               <button
                 className="board-write-btn"
-                onClick={() => navigate("create")}
+                onClick={() => navigate("post")}
               >
                 작성하기
               </button>

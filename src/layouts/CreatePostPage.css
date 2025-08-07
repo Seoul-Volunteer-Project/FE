@@ -1,0 +1,43 @@
+.create-post-container {
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 0 20px;
+}
+
+.create-post-title {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+.create-post-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.create-post-input,
+.create-post-textarea,
+.create-post-file {
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+}
+
+.create-post-textarea {
+  height: 200px;
+  resize: vertical;
+}
+
+.create-post-submit {
+  background-color: #2b2b2c;
+  color: white;
+  padding: 0.8rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.create-post-submit:hover {
+  background-color: #444;
+}

@@ -16,6 +16,7 @@ import Supports from "./pages/support/Supports";
 import Custom from "./pages/support/Custom";
 import Community from "./pages/community/Community";
 import Gallery from "./pages/community/Gallery";
+import CreatePostPage from "./layouts/CreatePostPage";
 import LoginPage from "./pages/user/LoginPage";
 import SignupPage from "./pages/user/SignupPage";
 
@@ -51,6 +52,10 @@ function App() {
         <main className="main-content">
           <Routes>
             <Route path="/" element={<Home />} />
+
+            {/* Auth 페이지 라우팅 */}
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<SignupPage />} />
 
             {/* 소개 페이지 라우팅 */}
             <Route
@@ -93,9 +98,11 @@ function App() {
               <Route path="/boards/gallery" element={<Gallery />} />
             </Route>
 
-            {/* Auth 페이지 라우팅 */}
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/signup" element={<SignupPage />} />
+            {/* 게시물 작성 페이지 라우팅 */}
+            <Route
+              path="/boards/:boardType/post"
+              element={<CreatePostPage />}
+            />
           </Routes>
         </main>
 
