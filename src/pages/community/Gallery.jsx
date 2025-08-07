@@ -49,7 +49,7 @@ function Gallery() {
             <div className="gallery-write-btn-container">
               <button
                 className="gallery-write-btn"
-                onClick={() => navigate("/community/gallery/create")}
+                onClick={() => navigate("create")}
               >
                 작성하기
               </button>

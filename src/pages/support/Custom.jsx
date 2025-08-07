@@ -1,4 +1,4 @@
-import "./CustomSearch.css";
+import "./Custom.css";
 import { motion } from "framer-motion";
 
 function CustomSearch() {

@@ -27,52 +27,52 @@ function Header() {
         <nav className="header-center">
           <ul className="nav-menu">
             <li>
-              <Link to="/about/aboutIntro">소개</Link>
+              <Link to="/about/intro">소개</Link>
               <ul className="dropdown">
                 <li>
-                  <Link to="/about/aboutIntro">기관 소개</Link>
+                  <Link to="/about/intro">기관 소개</Link>
                 </li>
                 <li>
-                  <Link to="/about/aboutGoal">함께하기</Link>
+                  <Link to="/about/goal">함께하기</Link>
                 </li>
               </ul>
             </li>
             <li>
-              <Link to="/youthInfo/housingBoard">청년정보</Link>
+              <Link to="/boards/housing">청년정보</Link>
               <ul className="dropdown">
                 <li>
-                  <Link to="/youthInfo/housingBoard">주거 정보</Link>
+                  <Link to="/boards/housing">주거 정보</Link>
                 </li>
                 <li>
-                  <Link to="/youthInfo/educationBoard">교육 정보</Link>
+                  <Link to="/boards/education">교육 정보</Link>
                 </li>
                 <li>
-                  <Link to="/youthInfo/financeBoard">금융 정보</Link>
+                  <Link to="/boards/finance">금융 정보</Link>
                 </li>
                 <li>
-                  <Link to="/youthInfo/policyBoard">정책 정보</Link>
+                  <Link to="/boards/policy">정책 정보</Link>
                 </li>
               </ul>
             </li>
             <li>
-              <Link to="/support/all">지원사업</Link>
+              <Link to="/boards/supports">지원사업</Link>
               <ul className="dropdown">
                 <li>
-                  <Link to="/support/all">전체 사업</Link>
+                  <Link to="/boards/supports">전체 사업</Link>
                 </li>
                 <li>
-                  <Link to="/support/custom">맞춤 사업 찾기</Link>
+                  <Link to="/boards/custom">맞춤 사업 찾기</Link>
                 </li>
               </ul>
             </li>
             <li>
-              <Link to="/community/board">소통공간</Link>
+              <Link to="/boards/community">소통공간</Link>
               <ul className="dropdown">
                 <li>
-                  <Link to="/community/board">게시판</Link>
+                  <Link to="/boards/community">게시판</Link>
                 </li>
                 <li>
-                  <Link to="/community/gallery">사진첩</Link>
+                  <Link to="/boards/gallery">사진첩</Link>
                 </li>
               </ul>
             </li>

@@ -6,40 +6,40 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import GlobalSidebarLayout from "./layouts/GlobalSidebarLayout";
 import ScrollToTop from "./components/ScrollToTop";
-import AboutIntro from "./pages/about/AboutIntro";
-import AboutGoal from "./pages/about/AboutGoal";
-import HousingBoard from "./pages/youthInfo/HousingBoard";
-import EducationBoard from "./pages/youthInfo/EducationBoard";
-import FinanceBoard from "./pages/youthInfo/FinanceBoard";
-import PolicyBoard from "./pages/youthInfo/PolicyBoard";
-import SupportList from "./pages/support/SupportList";
-import CustomSearch from "./pages/support/CustomSearch";
-import CommunityBoard from "./pages/community/CommunityBoard";
+import Intro from "./pages/about/Intro";
+import Goal from "./pages/about/Goal";
+import Housing from "./pages/youthInfo/Housing";
+import Education from "./pages/youthInfo/Education";
+import Finance from "./pages/youthInfo/Finance";
+import Policy from "./pages/youthInfo/Policy";
+import Supports from "./pages/support/Supports";
+import Custom from "./pages/support/Custom";
+import Community from "./pages/community/Community";
 import Gallery from "./pages/community/Gallery";
 import LoginPage from "./pages/user/LoginPage";
 import SignupPage from "./pages/user/SignupPage";
 
 // 메뉴 정의
 const aboutMenu = [
-  { label: "기관 소개", path: "/about/aboutIntro" },
-  { label: "함께하기", path: "/about/aboutGoal" },
+  { label: "기관 소개", path: "/about/intro" },
+  { label: "함께하기", path: "/about/goal" },
 ];
 
 const infoMenu = [
-  { label: "주거 정보", path: "/youthInfo/HousingBoard" },
-  { label: "교육 정보", path: "/youthInfo/EducationBoard" },
-  { label: "금융 정보", path: "/youthInfo/FinanceBoard" },
-  { label: "정책 정보", path: "/youthInfo/PolicyBoard" },
+  { label: "주거 정보", path: "/boards/housing" },
+  { label: "교육 정보", path: "/boards/education" },
+  { label: "금융 정보", path: "/boards/finance" },
+  { label: "정책 정보", path: "/boards/policy" },
 ];
 
 const supportMenu = [
-  { label: "전체 사업", path: "/support/all" },
-  { label: "맞춤 사업 찾기", path: "/support/custom" },
+  { label: "전체 사업", path: "/boards/supports" },
+  { label: "맞춤 사업 찾기", path: "/boards/custom" },
 ];
 
 const communityMenu = [
-  { label: "게시판", path: "/community/board" },
-  { label: "사진첩", path: "/community/gallery" },
+  { label: "게시판", path: "/boards/community" },
+  { label: "사진첩", path: "/boards/gallery" },
 ];
 
 function App() {
@@ -57,49 +57,40 @@ function App() {
               path="/about"
               element={<GlobalSidebarLayout menuItems={aboutMenu} />}
             >
-              <Route index element={<AboutIntro />} />
-              <Route path="/about/aboutIntro" element={<AboutIntro />} />
-              <Route path="/about/aboutGoal" element={<AboutGoal />} />
+              <Route index element={<Intro />} />
+              <Route path="/about/intro" element={<Intro />} />
+              <Route path="/about/goal" element={<Goal />} />
             </Route>
 
             {/* 청년정보 페이지 라우팅 */}
             <Route
-              path="/youthInfo"
+              path="/boards"
               element={<GlobalSidebarLayout menuItems={infoMenu} />}
             >
-              <Route index element={<HousingBoard />} />
-              <Route
-                path="/youthInfo/housingBoard"
-                element={<HousingBoard />}
-              />
-              <Route
-                path="/youthInfo/educationBoard"
-                element={<EducationBoard />}
-              />
-              <Route
-                path="/youthInfo/financeBoard"
-                element={<FinanceBoard />}
-              />
-              <Route path="/youthInfo/policyBoard" element={<PolicyBoard />} />
+              <Route index element={<Housing />} />
+              <Route path="/boards/housing" element={<Housing />} />
+              <Route path="/boards/education" element={<Education />} />
+              <Route path="/boards/finance" element={<Finance />} />
+              <Route path="/boards/policy" element={<Policy />} />
             </Route>
 
             {/* 지원사업 페이지 라우팅 */}
             <Route
-              path="/support"
+              path="/boards"
               element={<GlobalSidebarLayout menuItems={supportMenu} />}
             >
-              <Route index element={<SupportList />} />
-              <Route path="/support/all" element={<SupportList />} />
-              <Route path="/support/custom" element={<CustomSearch />} />
+              <Route index element={<Supports />} />
+              <Route path="/boards/supports" element={<Supports />} />
+              <Route path="/boards/custom" element={<Custom />} />
             </Route>
 
             {/* 소통공간 페이지 라우팅 */}
             <Route
-              path="/community"
+              path="/boards"
               element={<GlobalSidebarLayout menuItems={communityMenu} />}
             >
-              <Route path="/community/board" element={<CommunityBoard />} />
-              <Route path="/community/gallery" element={<Gallery />} />
+              <Route path="/boards/community" element={<Community />} />
+              <Route path="/boards/gallery" element={<Gallery />} />
             </Route>
 
             {/* Auth 페이지 라우팅 */}

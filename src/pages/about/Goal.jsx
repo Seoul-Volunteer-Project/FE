@@ -1,4 +1,4 @@
-import "./AboutGoal.css";
+import "./Goal.css";
 import { motion } from "framer-motion";
 
 function GoalPage() {

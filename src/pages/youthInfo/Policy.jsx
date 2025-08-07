@@ -5,15 +5,15 @@ import { useNavigate } from "react-router-dom";
 
 // 더미 사진 데이터
 const dummyImages = [
-  { id: 1, src: "/assets/photo1.jpg", title: "청년 전세자금대출" },
-  { id: 2, src: "/assets/photo2.jpg", title: "청년 월세지원" },
-  { id: 3, src: "/assets/photo3.jpg", title: "공공임대주택" },
-  { id: 4, src: "/assets/photo4.jpg", title: "청년 매입임대" },
-  { id: 5, src: "/assets/photo5.jpg", title: "전세보증금 반환보증" },
-  { id: 6, src: "/assets/photo6.jpg", title: "역세권 청년주택" },
+  { id: 1, src: "/assets/photo1.jpg", title: "청년기본소득" },
+  { id: 2, src: "/assets/photo2.jpg", title: "청년정책참여단" },
+  { id: 3, src: "/assets/photo3.jpg", title: "지역주도형 청년일자리" },
+  { id: 4, src: "/assets/photo4.jpg", title: "청년마음건강지원" },
+  { id: 5, src: "/assets/photo5.jpg", title: "청년교통비 지원" },
+  { id: 6, src: "/assets/photo6.jpg", title: "청년문화패스" },
 ];
 
-function HousingBoard() {
+function PolicyBoard() {
   const navigate = useNavigate();
   const { userInfo, isLoggedIn } = useAuth(); // Context에서 유저 정보 가져오기
   const isAdmin = userInfo?.role === "ADMIN"; // 관리자 여부 판단
@@ -26,7 +26,7 @@ function HousingBoard() {
     >
       <div className="gallery-page">
         {/* 제목 */}
-        <h1 className="gallery-title">주거 정보</h1>
+        <h1 className="gallery-title">정책 정보</h1>
 
         {/* 구분선 */}
         <div className="gallery-divider"></div>
@@ -49,7 +49,7 @@ function HousingBoard() {
             <div className="gallery-write-btn-container">
               <button
                 className="gallery-write-btn"
-                onClick={() => navigate("/youthInfo/housingBoard/create")}
+                onClick={() => navigate("create")}
               >
                 작성하기
               </button>
@@ -61,4 +61,4 @@ function HousingBoard() {
   );
 }
 
-export default HousingBoard;
+export default PolicyBoard;

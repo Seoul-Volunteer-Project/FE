@@ -112,7 +112,7 @@ function CommunityBoard() {
             <div className="board-write-btn-container">
               <button
                 className="board-write-btn"
-                onClick={() => navigate("/community/board/create")}
+                onClick={() => navigate("create")}
               >
                 작성하기
               </button>

@@ -1,4 +1,4 @@
-import "./AboutIntro.css";
+import "./Intro.css";
 import byeotnwiLogo from "../../assets/aboutPage.png"; // 로고 파일 경로에 맞게 조정
 import { motion } from "framer-motion";
 
