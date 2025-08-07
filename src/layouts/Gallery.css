@@ -24,7 +24,7 @@
   width: 100%;
   padding-top: 100%; /* ✅ 정사각형 비율 유지 */
   overflow: hidden;
-  border-radius: 6px;
+  border-radius: 3px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -56,16 +56,51 @@
   text-align: center;
 }
 
-/* 다크모드 대응 */
-/* body.dark .gallery-title {
-  border-bottom-color: #ccc;
-  color: #f0f0f0;
+/* --- 하단 영역 ---*/
+
+/* ✅ 페이징과 작성 버튼 묶는 영역 */
+.gallery-bottom-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5rem;
+  margin-bottom: 2rem;
+  position: relative;
 }
 
-body.dark .gallery-item {
-  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+/* ✅ 페이징은 중앙 정렬 */
+.gallery-pagination {
+  font-size: 1.1rem;
+  text-align: center;
+  color: #333;
+  margin-bottom: 1rem;
 }
 
-body.dark .gallery-caption {
-  background: rgba(50, 50, 50, 0.7);
-} */
+/* ✅ 작성 버튼을 오른쪽에 배치 */
+.gallery-write-btn-container {
+  width: 100%;
+  max-width: 100%; /* 카드들이 최대 몇 너비인지에 따라 조정 */
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 10px;
+  margin: 0 auto;
+}
+
+/* ✅ 작성 버튼 스타일 및 hover 확대 효과 */
+.gallery-write-btn {
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 8px 14px;
+  background-color: #333333;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transform: scale(1);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.gallery-write-btn:hover {
+  transform: scale(1.08); /* 확대 효과 */
+  background-color: #555;
+}

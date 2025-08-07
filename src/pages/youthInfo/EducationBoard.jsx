@@ -1,5 +1,7 @@
 import "../../layouts/Gallery.css";
 import { motion } from "framer-motion";
+import { useAuth } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 // 더미 사진 데이터
 const dummyImages = [
@@ -12,6 +14,10 @@ const dummyImages = [
 ];
 
 function EducationBoard() {
+  const navigate = useNavigate();
+  const { userInfo, isLoggedIn } = useAuth(); // Context에서 유저 정보 가져오기
+  const isAdmin = userInfo?.role === "ADMIN"; // 관리자 여부 판단
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -33,6 +39,22 @@ function EducationBoard() {
               <div className="gallery-caption">{item.title}</div>
             </div>
           ))}
+        </div>
+
+        {/* 페이징 + 작성 버튼 */}
+        <div className="gallery-bottom-area">
+          <div className="gallery-pagination">〈 1 2 3 〉</div>
+
+          {isAdmin && (
+            <div className="gallery-write-btn-container">
+              <button
+                className="gallery-write-btn"
+                onClick={() => navigate("/youthInfo/educationBoard/create")}
+              >
+                작성하기
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </motion.div>

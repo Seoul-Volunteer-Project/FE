@@ -2,12 +2,14 @@ import "./LoginPage.css";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { login, getMyInfo, logout } from "../../api/authAPI";
+import { useAuth } from "../../context/AuthContext";
 
 function LoginPage() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [isLoggedIn, setIsLoggedIn] = useState(null);
   const [userInfo, setUserInfo] = useState(null);
+  const { fetchUser } = useAuth();
 
   useEffect(() => {
     document.body.classList.add("fade-in");
@@ -45,7 +47,7 @@ function LoginPage() {
     }
     try {
       await login({ email, password });
-      // alert("로그인 성공");
+      await fetchUser();
       navigate("/"); // 홈으로 이동
     } catch (error) {
       alert("로그인 실패: " + (error.response?.data || "서버 오류"));
@@ -55,7 +57,7 @@ function LoginPage() {
   const handleLogout = async () => {
     try {
       await logout();
-      // alert("로그아웃 되었습니다.");
+      await fetchUser();
       setIsLoggedIn(false);
       setUserInfo(null);
     } catch (error) {

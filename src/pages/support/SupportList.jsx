@@ -1,10 +1,15 @@
-import { useState } from "react";
 import "../../layouts/Board.css";
 import { motion } from "framer-motion";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 
 function SupportList() {
   const [searchType, setSearchType] = useState("title");
   const [searchKeyword, setSearchKeyword] = useState("");
+  const { userInfo } = useAuth(); // ✅ 관리자 판별
+  const isAdmin = userInfo?.role === "ADMIN";
+  const navigate = useNavigate();
 
   const dummyPosts = [
     {
@@ -99,6 +104,22 @@ function SupportList() {
             )}
           </tbody>
         </table>
+
+        {/* ✅ 페이징 + 작성 버튼 */}
+        <div className="board-bottom-area">
+          <div className="board-pagination">〈 1 2 3 〉</div>
+
+          {isAdmin && (
+            <div className="board-write-btn-container">
+              <button
+                className="board-write-btn"
+                onClick={() => navigate("/support/all/create")}
+              >
+                작성하기
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </motion.div>
   );

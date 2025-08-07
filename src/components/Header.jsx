@@ -15,21 +15,6 @@ function Header() {
   const closeMenu = () => setIsMenuOpen(false);
   const navigate = useNavigate();
 
-  // const [isDarkMode, setIsDarkMode] = useState(false);
-
-  // 다크모드 전환 시 body 클래스 토글
-  // useEffect(() => {
-  //   if (isDarkMode) {
-  //     document.body.classList.add("dark");
-  //   } else {
-  //     document.body.classList.remove("dark");
-  //   }
-  // }, [isDarkMode]);
-
-  // const toggleDarkMode = () => {
-  //   setIsDarkMode((prev) => !prev);
-  // };
-
   return (
     <>
       {/* 헤더 */}
