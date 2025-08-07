@@ -19,7 +19,7 @@ body.fade-in .login-container {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 30vh;
+  min-height: 45vh;
   padding: 2rem;
   margin-top: 10vh;
 }
@@ -90,6 +90,24 @@ body.fade-in .login-container {
 
 .signup-link span:hover {
   color: #1c3f6b;
+}
+
+.admin-login-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.admin-login-link {
+  font-size: 10px;
+  color: #a0a0a0;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.admin-login-link:hover {
+  color: #333;
+  text-decoration: underline;
 }
 
 /* 로그아웃 영역 */

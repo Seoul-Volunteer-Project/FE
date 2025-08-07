@@ -1,4 +1,4 @@
-import "../community/Gallery.css";
+import "../../layouts/Gallery.css";
 import { motion } from "framer-motion";
 
 // 더미 사진 데이터

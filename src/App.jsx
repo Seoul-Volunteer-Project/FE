@@ -17,6 +17,7 @@ import CustomSearch from "./pages/support/CustomSearch";
 import CommunityBoard from "./pages/community/CommunityBoard";
 import Gallery from "./pages/community/Gallery";
 import LoginPage from "./pages/user/LoginPage";
+import AdminLoginPage from "./pages/user/AdminLoginPage";
 import SignupPage from "./pages/user/SignupPage";
 
 // 메뉴 정의
@@ -104,6 +105,7 @@ function App() {
 
             {/* Auth 페이지 라우팅 */}
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/admin-login" element={<AdminLoginPage />} />
             <Route path="/signup" element={<SignupPage />} />
           </Routes>
         </main>

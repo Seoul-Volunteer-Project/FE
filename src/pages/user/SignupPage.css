@@ -19,9 +19,9 @@ body.fade-in .signup-container {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 30vh;
+  min-height: 50vh;
   padding: 2rem;
-  margin-top: 6vh;
+  margin-top: 5vh;
 }
 
 .signup-title {
