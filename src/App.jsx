@@ -63,8 +63,8 @@ function App() {
               element={<GlobalSidebarLayout menuItems={aboutMenu} />}
             >
               <Route index element={<Intro />} />
-              <Route path="/about/intro" element={<Intro />} />
-              <Route path="/about/goal" element={<Goal />} />
+              <Route path="intro" element={<Intro />} />
+              <Route path="goal" element={<Goal />} />
             </Route>
 
             {/* 청년정보 페이지 라우팅 */}
@@ -73,10 +73,10 @@ function App() {
               element={<GlobalSidebarLayout menuItems={infoMenu} />}
             >
               <Route index element={<Housing />} />
-              <Route path="/boards/housing" element={<Housing />} />
-              <Route path="/boards/education" element={<Education />} />
-              <Route path="/boards/finance" element={<Finance />} />
-              <Route path="/boards/policy" element={<Policy />} />
+              <Route path="housing" element={<Housing />} />
+              <Route path="education" element={<Education />} />
+              <Route path="finance" element={<Finance />} />
+              <Route path="policy" element={<Policy />} />
             </Route>
 
             {/* 지원사업 페이지 라우팅 */}
@@ -85,8 +85,8 @@ function App() {
               element={<GlobalSidebarLayout menuItems={supportMenu} />}
             >
               <Route index element={<Supports />} />
-              <Route path="/boards/supports" element={<Supports />} />
-              <Route path="/boards/custom" element={<Custom />} />
+              <Route path="supports" element={<Supports />} />
+              <Route path="custom" element={<Custom />} />
             </Route>
 
             {/* 소통공간 페이지 라우팅 */}
@@ -94,14 +94,20 @@ function App() {
               path="/boards"
               element={<GlobalSidebarLayout menuItems={communityMenu} />}
             >
-              <Route path="/boards/community" element={<Community />} />
-              <Route path="/boards/gallery" element={<Gallery />} />
+              <Route path="community" element={<Community />} />
+              <Route path="gallery" element={<Gallery />} />
             </Route>
 
             {/* 게시물 작성 페이지 라우팅 */}
             <Route
               path="/boards/:boardType/post"
               element={<CreatePostPage />}
+            />
+
+            {/* 커스텀 페이지 (맞춤 사업 찾기 등) */}
+            <Route
+              path="/boards/custom"
+              element={<div>맞춤사업 찾기 페이지</div>}
             />
           </Routes>
         </main>

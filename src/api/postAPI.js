@@ -13,7 +13,7 @@ export const createPost = async (formData) => {
 };
 
 export const getPostsByBoardType = async (boardType) => {
-  const response = await axios.get(`/board/${boardType}`, {
+  const response = await axios.get(`${BASE_URL}/board/${boardType}`, {
     withCredentials: true,
   });
   return response.data;

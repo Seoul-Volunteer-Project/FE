@@ -1,48 +1,60 @@
 import "../../layouts/Board.css";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
+import { getPostsByBoardType } from "../../api/postAPI";
+import {
+  FaAngleDoubleLeft,
+  FaAngleLeft,
+  FaAngleRight,
+  FaAngleDoubleRight,
+} from "react-icons/fa"; // 아이콘 불러오기
 
-function SupportList() {
-  const [searchType, setSearchType] = useState("title");
-  const [searchKeyword, setSearchKeyword] = useState("");
-  const { userInfo } = useAuth(); // ✅ 관리자 판별
+function SupportsBoard() {
+  const { userInfo } = useAuth();
   const isAdmin = userInfo?.role === "ADMIN";
   const navigate = useNavigate();
+  const [posts, setPosts] = useState([]);
+  const [searchType, setSearchType] = useState("title");
+  const [searchKeyword, setSearchKeyword] = useState("");
+  const [currentPage, setCurrentPage] = useState(1); // 현재 페이지
+  const postsPerPage = 10;
 
-  const dummyPosts = [
-    {
-      id: 1,
-      title: "청년 주거 지원사업",
-      author: "관리자",
-      date: "2025-06-26",
-      views: 12,
-    },
-    {
-      id: 2,
-      title: "청년 금융지원 신청",
-      author: "홍길동",
-      date: "2025-06-25",
-      views: 8,
-    },
-    {
-      id: 3,
-      title: "취업 연계 프로그램",
-      author: "이순신",
-      date: "2025-06-24",
-      views: 20,
-    },
-  ];
+  // 게시글 목록 불러오기
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const data = await getPostsByBoardType("SUPPORTS");
+        const sorted = data.sort(
+          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+        ); // 최신순 정렬
+        setPosts(data);
+      } catch (error) {
+        alert("게시글 목록을 불러오지 못했습니다.");
+        console.error(error);
+      }
+    };
 
-  const filteredPosts = dummyPosts.filter((post) => {
+    fetchPosts();
+  }, []);
+
+  // 검색 필터링
+  const filteredPosts = posts.filter((post) => {
     if (searchType === "title") {
       return post.title.includes(searchKeyword);
     } else if (searchType === "author") {
-      return post.author.includes(searchKeyword);
+      return post.author.name.includes(searchKeyword);
     }
     return true;
   });
+
+  const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+
+  const paginatedPosts = filteredPosts.slice(
+    (currentPage - 1) * postsPerPage,
+    currentPage * postsPerPage
+  );
 
   return (
     <motion.div
@@ -87,14 +99,18 @@ function SupportList() {
             </tr>
           </thead>
           <tbody>
-            {filteredPosts.length > 0 ? (
-              filteredPosts.map((post) => (
+            {paginatedPosts.length > 0 ? (
+              paginatedPosts.map((post, idx) => (
                 <tr key={post.id}>
-                  <td>{post.id}</td>
+                  <td>
+                    {filteredPosts.length -
+                      (currentPage - 1) * postsPerPage -
+                      idx}
+                  </td>
                   <td>{post.title}</td>
-                  <td>{post.author}</td>
-                  <td>{post.date}</td>
-                  <td>{post.views}</td>
+                  <td>{post.author.name}</td>
+                  <td>{new Date(post.createdAt).toLocaleDateString()}</td>
+                  <td>{post.viewContent}</td>
                 </tr>
               ))
             ) : (
@@ -105,9 +121,47 @@ function SupportList() {
           </tbody>
         </table>
 
-        {/* ✅ 페이징 + 작성 버튼 */}
+        {/* 페이징 + 작성 버튼 */}
         <div className="board-bottom-area">
-          <div className="board-pagination">〈 1 2 3 〉</div>
+          <div className="board-pagination">
+            <button
+              onClick={() => setCurrentPage(1)}
+              disabled={currentPage === 1}
+            >
+              <FaAngleDoubleLeft />
+            </button>
+            <button
+              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+              disabled={currentPage === 1}
+            >
+              <FaAngleLeft />
+            </button>
+
+            {Array.from({ length: totalPages }, (_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentPage(i + 1)}
+                className={currentPage === i + 1 ? "active-page-btn" : ""}
+              >
+                {i + 1}
+              </button>
+            ))}
+
+            <button
+              onClick={() =>
+                setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+              }
+              disabled={currentPage === totalPages}
+            >
+              <FaAngleRight />
+            </button>
+            <button
+              onClick={() => setCurrentPage(totalPages)}
+              disabled={currentPage === totalPages}
+            >
+              <FaAngleDoubleRight />
+            </button>
+          </div>
 
           {isAdmin && (
             <div className="board-write-btn-container">
@@ -125,4 +179,4 @@ function SupportList() {
   );
 }
 
-export default SupportList;
+export default SupportsBoard;
