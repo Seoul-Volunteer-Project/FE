@@ -12,13 +12,13 @@ import Housing from "./pages/youthInfo/Housing";
 import Education from "./pages/youthInfo/Education";
 import Finance from "./pages/youthInfo/Finance";
 import Policy from "./pages/youthInfo/Policy";
-import Supports from "./pages/support/Supports";
-import Custom from "./pages/support/Custom";
+import Supports from "./pages/supports/Supports";
+import Custom from "./pages/supports/Custom";
 import Community from "./pages/community/Community";
 import Gallery from "./pages/community/Gallery";
-import CreatePostPage from "./layouts/CreatePostPage";
-import LoginPage from "./pages/user/LoginPage";
-import SignupPage from "./pages/user/SignupPage";
+import LoginPage from "./pages/auth/LoginPage";
+import SignupPage from "./pages/auth/SignupPage";
+import PostCreateRouter from "./pages/posts/PostCreateRouter";
 
 // 메뉴 정의
 const aboutMenu = [
@@ -101,7 +101,7 @@ function App() {
             {/* 게시물 작성 페이지 라우팅 */}
             <Route
               path="/boards/:boardType/post"
-              element={<CreatePostPage />}
+              element={<PostCreateRouter />}
             />
 
             {/* 커스텀 페이지 (맞춤 사업 찾기 등) */}

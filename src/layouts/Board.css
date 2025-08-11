@@ -202,7 +202,7 @@ body.dark .board-search button:hover {
   border: 1px solid #2b2b2c;
 }
 
-/* ✅ 작성 버튼 오른쪽 정렬 컨테이너 */
+/* 작성 버튼 오른쪽 정렬 컨테이너 */
 .board-write-btn-container {
   width: 100%;
   max-width: 1200px; /* 게시판 너비 기준 */
@@ -212,21 +212,21 @@ body.dark .board-search button:hover {
   margin: 0 auto;
 }
 
-/* ✅ 작성 버튼 스타일 + hover 확대 효과 */
+/* 작성 버튼 스타일 */
 .board-write-btn {
   font-size: 1rem;
   font-weight: 500;
-  padding: 8px 14px;
+  padding: 0.6rem 1.2rem;
   background-color: #333;
   color: white;
   border: none;
-  border-radius: 3px;
+  border-radius: 4px;
   cursor: pointer;
   transform: scale(1);
   transition: transform 0.2s ease, background 0.2s ease;
 }
 
 .board-write-btn:hover {
-  transform: scale(1.08);
+  transform: scale(1.02);
   background-color: #555;
 }

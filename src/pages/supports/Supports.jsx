@@ -99,7 +99,11 @@ function SupportsBoard() {
             </tr>
           </thead>
           <tbody>
-            {paginatedPosts.length > 0 ? (
+            {posts.length === 0 ? (
+              <tr>
+                <td colSpan="5">게시글이 없습니다.</td>
+              </tr>
+            ) : paginatedPosts.length > 0 ? (
               paginatedPosts.map((post, idx) => (
                 <tr key={post.id}>
                   <td>

@@ -2,21 +2,47 @@ import "../../layouts/Gallery.css";
 import { motion } from "framer-motion";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-
-// 더미 사진 데이터
-const dummyImages = [
-  { id: 1, src: "/assets/photo1.jpg", title: "청년 전세자금대출" },
-  { id: 2, src: "/assets/photo2.jpg", title: "청년 월세지원" },
-  { id: 3, src: "/assets/photo3.jpg", title: "공공임대주택" },
-  { id: 4, src: "/assets/photo4.jpg", title: "청년 매입임대" },
-  { id: 5, src: "/assets/photo5.jpg", title: "전세보증금 반환보증" },
-  { id: 6, src: "/assets/photo6.jpg", title: "역세권 청년주택" },
-];
+import { useEffect, useState } from "react";
+import { getPostsByBoardType } from "../../api/postAPI";
+import placeholder from "../../assets/placeholder.png";
+import {
+  FaAngleDoubleLeft,
+  FaAngleLeft,
+  FaAngleRight,
+  FaAngleDoubleRight,
+} from "react-icons/fa";
 
 function HousingBoard() {
   const navigate = useNavigate();
-  const { userInfo, isLoggedIn } = useAuth(); // Context에서 유저 정보 가져오기
+  const { userInfo } = useAuth(); // Context에서 유저 정보 가져오기
   const isAdmin = userInfo?.role === "ADMIN"; // 관리자 여부 판단
+  const [posts, setPosts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 6;
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const data = await getPostsByBoardType("HOUSING");
+        const sorted = data.sort(
+          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+        );
+        setPosts(sorted);
+      } catch (err) {
+        alert("게시글을 불러오지 못했습니다.");
+        console.error(err);
+      }
+    };
+
+    fetchPosts();
+  }, []);
+
+  const totalPages = Math.ceil(posts.length / postsPerPage);
+
+  const paginatedPosts = posts.slice(
+    (currentPage - 1) * postsPerPage,
+    currentPage * postsPerPage
+  );
 
   return (
     <motion.div
@@ -33,17 +59,67 @@ function HousingBoard() {
 
         {/* 앨범 그리드 */}
         <div className="gallery-grid">
-          {dummyImages.map((item) => (
-            <div key={item.id} className="gallery-item">
-              <img src={item.src} alt={item.title} />
-              <div className="gallery-caption">{item.title}</div>
-            </div>
-          ))}
+          {paginatedPosts.length > 0 ? (
+            paginatedPosts.map((post) => (
+              <div key={post.id} className="gallery-item">
+                <img
+                  src={post.images?.[0]?.imageUrl || placeholder}
+                  alt={post.title}
+                  className={
+                    post.images?.[0]?.imageUrl
+                      ? "thumbnail-image"
+                      : "placeholder-image"
+                  }
+                />
+                <div className="gallery-caption">{post.title}</div>
+              </div>
+            ))
+          ) : (
+            <div className="no-posts-message">게시글이 없습니다.</div>
+          )}
         </div>
 
         {/* 페이징 + 작성 버튼 */}
         <div className="gallery-bottom-area">
-          <div className="gallery-pagination">〈 1 2 3 〉</div>
+          <div className="gallery-pagination">
+            <button
+              onClick={() => setCurrentPage(1)}
+              disabled={currentPage === 1}
+            >
+              <FaAngleDoubleLeft />
+            </button>
+            <button
+              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+              disabled={currentPage === 1}
+            >
+              <FaAngleLeft />
+            </button>
+
+            {Array.from({ length: totalPages }, (_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentPage(i + 1)}
+                className={currentPage === i + 1 ? "active-page-btn" : ""}
+              >
+                {i + 1}
+              </button>
+            ))}
+
+            <button
+              onClick={() =>
+                setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+              }
+              disabled={currentPage === totalPages}
+            >
+              <FaAngleRight />
+            </button>
+            <button
+              onClick={() => setCurrentPage(totalPages)}
+              disabled={currentPage === totalPages}
+            >
+              <FaAngleDoubleRight />
+            </button>
+          </div>
 
           {isAdmin && (
             <div className="gallery-write-btn-container">

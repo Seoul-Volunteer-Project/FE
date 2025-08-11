@@ -1,0 +1,154 @@
+.create-post-container {
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 0 20px;
+}
+
+.create-post-title {
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  color: #2b2b2c;
+}
+
+.create-post-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.create-post-input,
+.create-post-textarea,
+.create-post-file {
+  padding: 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.2s ease;
+}
+
+.create-post-input:focus,
+.create-post-textarea:focus {
+  border-color: #2b2b2c;
+  outline: none;
+}
+
+.create-post-textarea {
+  height: 350px;
+  resize: vertical;
+  border-radius: 4px;
+}
+
+/* input type="file" 커스텀 라벨 */
+.custom-file-upload {
+  display: inline-block;
+  background-color: #eee;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #444;
+  font-weight: 500;
+  width: fit-content;
+  transition: background-color 0.2s ease, transform 0.3s;
+}
+
+.custom-file-upload:hover {
+  background-color: #ddd;
+  transform: scale(1.02);
+}
+
+.custom-file-upload input[type="file"] {
+  display: none;
+}
+
+/* 파일 목록 */
+.create-post-file-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.create-post-file-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: 0.6rem 1rem;
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+  border-radius: 4px;
+}
+
+.delete-file-btn {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: color 0.2s, transform 0.3s;
+}
+
+.delete-file-btn:hover {
+  color: #d00;
+  transform: scale(1.2);
+}
+
+/* 두 버튼을 가로로 정렬 */
+.create-post-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px; /* 버튼 간 여백 */
+}
+
+/* 취소 버튼 전용 색상 */
+.cancel-btn {
+  background-color: #aaa;
+  color: #fff;
+}
+
+.cancel-btn:hover {
+  background-color: #c5c5c5; /* hover 시 진한 회색 */
+}
+
+/* 업로드한 이미지 미리보기 그리드 */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.gallery-image-item {
+  position: relative;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: grab;
+  background: #f5f5f5;
+  transition: transform 0.2s ease;
+}
+
+.gallery-image-item:hover {
+  transform: scale(1.05);
+  z-index: 2;
+}
+
+.gallery-image-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.image-index {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: rgba(43, 43, 43, 0.8);
+  color: white;
+  font-size: 1rem;
+  padding: 1px 6px;
+  border-radius: 3px;
+}

@@ -29,7 +29,7 @@ function Gallery() {
         );
         setPosts(sorted);
       } catch (err) {
-        alert("갤러리 게시글을 불러오지 못했습니다.");
+        alert("게시글을 불러오지 못했습니다.");
         console.error(err);
       }
     };
@@ -59,22 +59,24 @@ function Gallery() {
 
         {/* 앨범 그리드 */}
         <div className="gallery-grid">
-          {paginatedPosts.map((post) => (
-            <div key={post.id} className="gallery-item">
-              <img
-                src={
-                  post.images?.[0]?.imageUrl || placeholder // 이미지 없을 경우 대체
-                }
-                alt={post.title}
-                className={
-                  post.images?.[0]?.imageUrl
-                    ? "thumbnail-image"
-                    : "placeholder-image"
-                }
-              />
-              <div className="gallery-caption">{post.title}</div>
-            </div>
-          ))}
+          {paginatedPosts.length > 0 ? (
+            paginatedPosts.map((post) => (
+              <div key={post.id} className="gallery-item">
+                <img
+                  src={post.images?.[0]?.imageUrl || placeholder}
+                  alt={post.title}
+                  className={
+                    post.images?.[0]?.imageUrl
+                      ? "thumbnail-image"
+                      : "placeholder-image"
+                  }
+                />
+                <div className="gallery-caption">{post.title}</div>
+              </div>
+            ))
+          ) : (
+            <div className="no-posts-message">게시글이 없습니다.</div>
+          )}
         </div>
 
         {/* 페이징 + 작성 버튼 */}
