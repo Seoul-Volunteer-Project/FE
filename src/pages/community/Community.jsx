@@ -4,12 +4,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { getPostsByBoardType } from "../../api/postAPI";
-import {
-  FaAngleDoubleLeft,
-  FaAngleLeft,
-  FaAngleRight,
-  FaAngleDoubleRight,
-} from "react-icons/fa"; // 아이콘 불러오기
+import { FaAngleDoubleLeft, FaAngleLeft, FaAngleRight, FaAngleDoubleRight } from "react-icons/fa"; // 아이콘 불러오기
 
 function CommunityBoard() {
   const { userInfo } = useAuth();
@@ -21,14 +16,14 @@ function CommunityBoard() {
   const [currentPage, setCurrentPage] = useState(1); // 현재 페이지
   const postsPerPage = 10;
 
+  const BOARD_SEGMENT = "community";
+
   // 게시글 목록 불러오기
   useEffect(() => {
     const fetchPosts = async () => {
       try {
         const data = await getPostsByBoardType("COMMUNITY");
-        const sorted = data.sort(
-          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-        ); // 최신순 정렬
+        const sorted = data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)); // 최신순 정렬
         setPosts(data);
       } catch (error) {
         alert("게시글 목록을 불러오지 못했습니다.");
@@ -50,11 +45,12 @@ function CommunityBoard() {
   });
 
   const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+  const paginatedPosts = filteredPosts.slice((currentPage - 1) * postsPerPage, currentPage * postsPerPage);
 
-  const paginatedPosts = filteredPosts.slice(
-    (currentPage - 1) * postsPerPage,
-    currentPage * postsPerPage
-  );
+  // 행/제목 클릭 시 상세로 이동
+  const goDetail = (postId) => {
+    navigate(`/boards/${BOARD_SEGMENT}/${postId}`);
+  };
 
   return (
     <motion.div
@@ -68,10 +64,7 @@ function CommunityBoard() {
 
         {/* 검색 필터 */}
         <div className="board-search">
-          <select
-            value={searchType}
-            onChange={(e) => setSearchType(e.target.value)}
-          >
+          <select value={searchType} onChange={(e) => setSearchType(e.target.value)}>
             <option value="title">제목</option>
             <option value="author">작성자</option>
           </select>
@@ -105,12 +98,15 @@ function CommunityBoard() {
               </tr>
             ) : paginatedPosts.length > 0 ? (
               paginatedPosts.map((post, idx) => (
-                <tr key={post.id}>
-                  <td>
-                    {filteredPosts.length -
-                      (currentPage - 1) * postsPerPage -
-                      idx}
-                  </td>
+                <tr
+                  key={post.id}
+                  onClick={() => goDetail(post.id)} // 행 전체 클릭으로 상세 이동
+                  tabIndex={0} // 접근성: 키보드 Enter로도 이동
+                  onKeyDown={(e) => e.key === "Enter" && goDetail(post.id)}
+                  style={{ cursor: "pointer" }}
+                  aria-label={`게시글 상세로 이동: ${post.title}`}
+                >
+                  <td>{filteredPosts.length - (currentPage - 1) * postsPerPage - idx}</td>
                   <td>{post.title}</td>
                   <td>{post.author.name}</td>
                   <td>{new Date(post.createdAt).toLocaleDateString()}</td>
@@ -128,16 +124,10 @@ function CommunityBoard() {
         {/* 페이징 + 작성 버튼 */}
         <div className="board-bottom-area">
           <div className="board-pagination">
-            <button
-              onClick={() => setCurrentPage(1)}
-              disabled={currentPage === 1}
-            >
+            <button onClick={() => setCurrentPage(1)} disabled={currentPage === 1}>
               <FaAngleDoubleLeft />
             </button>
-            <button
-              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-              disabled={currentPage === 1}
-            >
+            <button onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))} disabled={currentPage === 1}>
               <FaAngleLeft />
             </button>
 
@@ -152,27 +142,19 @@ function CommunityBoard() {
             ))}
 
             <button
-              onClick={() =>
-                setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-              }
+              onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
               disabled={currentPage === totalPages}
             >
               <FaAngleRight />
             </button>
-            <button
-              onClick={() => setCurrentPage(totalPages)}
-              disabled={currentPage === totalPages}
-            >
+            <button onClick={() => setCurrentPage(totalPages)} disabled={currentPage === totalPages}>
               <FaAngleDoubleRight />
             </button>
           </div>
 
           {isAdmin && (
             <div className="board-write-btn-container">
-              <button
-                className="board-write-btn"
-                onClick={() => navigate("post")}
-              >
+              <button className="board-write-btn" onClick={() => navigate("post")}>
                 작성하기
               </button>
             </div>

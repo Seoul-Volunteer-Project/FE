@@ -19,6 +19,7 @@ import Gallery from "./pages/community/Gallery";
 import LoginPage from "./pages/auth/LoginPage";
 import SignupPage from "./pages/auth/SignupPage";
 import PostCreateRouter from "./pages/posts/PostCreateRouter";
+import PostDetailPage from "./pages/posts/PostDetailPage";
 
 // 메뉴 정의
 const aboutMenu = [
@@ -58,20 +59,14 @@ function App() {
             <Route path="/signup" element={<SignupPage />} />
 
             {/* 소개 페이지 라우팅 */}
-            <Route
-              path="/about"
-              element={<GlobalSidebarLayout menuItems={aboutMenu} />}
-            >
+            <Route path="/about" element={<GlobalSidebarLayout menuItems={aboutMenu} />}>
               <Route index element={<Intro />} />
               <Route path="intro" element={<Intro />} />
               <Route path="goal" element={<Goal />} />
             </Route>
 
             {/* 청년정보 페이지 라우팅 */}
-            <Route
-              path="/boards"
-              element={<GlobalSidebarLayout menuItems={infoMenu} />}
-            >
+            <Route path="/boards" element={<GlobalSidebarLayout menuItems={infoMenu} />}>
               <Route index element={<Housing />} />
               <Route path="housing" element={<Housing />} />
               <Route path="education" element={<Education />} />
@@ -80,38 +75,28 @@ function App() {
             </Route>
 
             {/* 지원사업 페이지 라우팅 */}
-            <Route
-              path="/boards"
-              element={<GlobalSidebarLayout menuItems={supportMenu} />}
-            >
+            <Route path="/boards" element={<GlobalSidebarLayout menuItems={supportMenu} />}>
               <Route index element={<Supports />} />
               <Route path="supports" element={<Supports />} />
               <Route path="custom" element={<Custom />} />
             </Route>
 
             {/* 소통공간 페이지 라우팅 */}
-            <Route
-              path="/boards"
-              element={<GlobalSidebarLayout menuItems={communityMenu} />}
-            >
+            <Route path="/boards" element={<GlobalSidebarLayout menuItems={communityMenu} />}>
               <Route path="community" element={<Community />} />
               <Route path="gallery" element={<Gallery />} />
             </Route>
 
             {/* 게시물 작성 페이지 라우팅 */}
-            <Route
-              path="/boards/:boardType/post"
-              element={<PostCreateRouter />}
-            />
+            <Route path="/boards/:boardType/post" element={<PostCreateRouter />} />
 
             {/* 커스텀 페이지 (맞춤 사업 찾기 등) */}
-            <Route
-              path="/boards/custom"
-              element={<div>맞춤사업 찾기 페이지</div>}
-            />
+            <Route path="/boards/custom" element={<div>맞춤사업 찾기 페이지</div>} />
+
+            {/* 상세 페이지 */}
+            <Route path="/boards/:boardType/:postId" element={<PostDetailPage />} />
           </Routes>
         </main>
-
         <Footer />
       </div>
     </Router>

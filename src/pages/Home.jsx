@@ -13,25 +13,25 @@ function Home() {
       title: "안정된 보금자리, 주거지원",
       emoji: "🏠",
       backgroundColor: "#e6f0ff",
-      path: "/youthInfo/housingBoard",
+      path: "/boards/housing",
     },
     {
       title: "청년 금융·저축 프로그램",
       emoji: "💰",
       backgroundColor: "#e6fff0",
-      path: "/youthInfo/financeBoard",
+      path: "/boards/finance",
     },
     {
       title: "진로 탐색과 역량 강화",
       emoji: "🎓",
       backgroundColor: "#ffecec",
-      path: "/youthInfo/educationBoard",
+      path: "/boards/education",
     },
     {
       title: "다양한 청년 맞춤 정책",
       emoji: "📄",
       backgroundColor: "#fff4e1",
-      path: "/youthInfo/policyBoard",
+      path: "/boards/policy",
     },
   ];
 

@@ -1,0 +1,94 @@
+.post-detail-page {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 0 20px;
+}
+
+.post-detail-title {
+  font-size: 1.9rem;
+  font-weight: 600;
+  margin: 0 0 0.8rem 0;
+  word-break: keep-all;
+}
+
+.post-detail-meta {
+  color: #666;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 1.6rem;
+}
+.meta-dot {
+  color: #bbb;
+}
+.meta-author {
+  font-weight: 500;
+}
+
+.post-detail-content {
+  white-space: pre-line; /* 줄바꿈 유지 */
+  line-height: 1.7;
+  font-size: 1.02rem;
+  color: #222;
+  padding: 1.2rem 0;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #e5e5e5;
+  min-height: 160px;
+}
+
+/* 첨부 이미지 섹션 */
+.post-detail-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+  margin-top: 1rem;
+}
+.post-detail-images img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* 하단 우측 버튼 */
+.post-detail-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 1.6rem;
+}
+
+/* 기존 작성 버튼 스타일 재사용 + 취소 전용 색 */
+.board-write-btn {
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 8px 14px;
+  background-color: #333333;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transform: scale(1);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.board-write-btn:hover {
+  transform: scale(1.02);
+  background-color: #555;
+}
+.cancel-btn {
+  background-color: #aaa;
+}
+.cancel-btn:hover {
+  background-color: #888;
+}
+
+/* 에러/없음 */
+.post-detail-page.not-found {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 0 20px;
+  color: #777;
+  text-align: center;
+}

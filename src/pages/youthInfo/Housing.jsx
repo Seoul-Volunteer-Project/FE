@@ -5,12 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getPostsByBoardType } from "../../api/postAPI";
 import placeholder from "../../assets/placeholder.png";
-import {
-  FaAngleDoubleLeft,
-  FaAngleLeft,
-  FaAngleRight,
-  FaAngleDoubleRight,
-} from "react-icons/fa";
+import { FaAngleDoubleLeft, FaAngleLeft, FaAngleRight, FaAngleDoubleRight } from "react-icons/fa";
 
 function HousingBoard() {
   const navigate = useNavigate();
@@ -20,13 +15,13 @@ function HousingBoard() {
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 6;
 
+  const BOARD_SEGMENT = "gallery";
+
   useEffect(() => {
     const fetchPosts = async () => {
       try {
         const data = await getPostsByBoardType("HOUSING");
-        const sorted = data.sort(
-          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-        );
+        const sorted = data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
         setPosts(sorted);
       } catch (err) {
         alert("게시글을 불러오지 못했습니다.");
@@ -38,11 +33,12 @@ function HousingBoard() {
   }, []);
 
   const totalPages = Math.ceil(posts.length / postsPerPage);
+  const paginatedPosts = posts.slice((currentPage - 1) * postsPerPage, currentPage * postsPerPage);
 
-  const paginatedPosts = posts.slice(
-    (currentPage - 1) * postsPerPage,
-    currentPage * postsPerPage
-  );
+  // 상세 페이지 이동
+  const goDetail = (postId) => {
+    navigate(`/boards/${BOARD_SEGMENT}/${postId}`);
+  };
 
   return (
     <motion.div
@@ -61,16 +57,24 @@ function HousingBoard() {
         <div className="gallery-grid">
           {paginatedPosts.length > 0 ? (
             paginatedPosts.map((post) => (
-              <div key={post.id} className="gallery-item">
+              <div
+                key={post.id}
+                className="gallery-item"
+                // 카드 전체 클릭으로 상세 이동
+                onClick={() => goDetail(post.id)}
+                // 키보드 접근성: Enter로도 이동
+                tabIndex={0}
+                onKeyDown={(e) => e.key === "Enter" && goDetail(post.id)}
+                style={{ cursor: "pointer" }}
+                aria-label={`게시글 상세로 이동: ${post.title}`}
+                role="button"
+              >
                 <img
                   src={post.images?.[0]?.imageUrl || placeholder}
                   alt={post.title}
-                  className={
-                    post.images?.[0]?.imageUrl
-                      ? "thumbnail-image"
-                      : "placeholder-image"
-                  }
+                  className={post.images?.[0]?.imageUrl ? "thumbnail-image" : "placeholder-image"}
                 />
+
                 <div className="gallery-caption">{post.title}</div>
               </div>
             ))
@@ -82,16 +86,10 @@ function HousingBoard() {
         {/* 페이징 + 작성 버튼 */}
         <div className="gallery-bottom-area">
           <div className="gallery-pagination">
-            <button
-              onClick={() => setCurrentPage(1)}
-              disabled={currentPage === 1}
-            >
+            <button onClick={() => setCurrentPage(1)} disabled={currentPage === 1}>
               <FaAngleDoubleLeft />
             </button>
-            <button
-              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-              disabled={currentPage === 1}
-            >
+            <button onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))} disabled={currentPage === 1}>
               <FaAngleLeft />
             </button>
 
@@ -106,27 +104,19 @@ function HousingBoard() {
             ))}
 
             <button
-              onClick={() =>
-                setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-              }
+              onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
               disabled={currentPage === totalPages}
             >
               <FaAngleRight />
             </button>
-            <button
-              onClick={() => setCurrentPage(totalPages)}
-              disabled={currentPage === totalPages}
-            >
+            <button onClick={() => setCurrentPage(totalPages)} disabled={currentPage === totalPages}>
               <FaAngleDoubleRight />
             </button>
           </div>
 
           {isAdmin && (
             <div className="gallery-write-btn-container">
-              <button
-                className="gallery-write-btn"
-                onClick={() => navigate("post")}
-              >
+              <button className="gallery-write-btn" onClick={() => navigate("post")}>
                 작성하기
               </button>
             </div>

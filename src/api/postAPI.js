@@ -18,3 +18,10 @@ export const getPostsByBoardType = async (boardType) => {
   });
   return response.data;
 };
+
+export const getPostById = async (postId) => {
+  const res = await axios.get(`${BASE_URL}/${postId}`, {
+    withCredentials: true,
+  });
+  return res.data;
+};
