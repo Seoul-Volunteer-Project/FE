@@ -41,12 +41,8 @@ function SupportBanner() {
     const containerWidth = container.clientWidth;
     const offset = containerWidth / 2 - itemWidth / 2;
 
-    slideRef.current.style.transition = isTransition
-      ? "transform 0.5s ease-in-out"
-      : "none";
-    slideRef.current.style.transform = `translateX(-${
-      itemWidth * currentIndex - offset
-    }px)`;
+    slideRef.current.style.transition = isTransition ? "transform 0.5s ease-in-out" : "none";
+    slideRef.current.style.transform = `translateX(-${itemWidth * currentIndex - offset}px)`;
 
     // ✅ 무한 루프 핵심 부분
     if (currentIndex >= bannerItems.length) {
@@ -64,13 +60,7 @@ function SupportBanner() {
       <div className="banner-left">
         <div className="banner-track" ref={slideRef}>
           {[...bannerItems, ...bannerItems].map((item, index) => (
-            <a
-              key={index}
-              href={item.link}
-              target="_blank"
-              rel="noreferrer"
-              className="banner-item"
-            >
+            <a key={index} href={item.link} target="_blank" rel="noreferrer" className="banner-item">
               <img src={item.image} alt={`지원사업 ${index + 1}`} />
             </a>
           ))}
@@ -87,10 +77,7 @@ function SupportBanner() {
           지금 바로 여러분에게 꼭 맞는 지원 사업을 <br />
           찾아보세요!
         </h2>
-        <button
-          className="search-button"
-          onClick={() => navigate("/support/custom")}
-        >
+        <button className="search-button" onClick={() => navigate("/boards/custom")}>
           맞춤 사업 찾기
         </button>
       </div>

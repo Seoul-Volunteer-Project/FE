@@ -25,3 +25,10 @@ export const getPostById = async (postId) => {
   });
   return res.data;
 };
+
+export const deletePost = async (postId) => {
+  const res = await axios.delete(`${BASE_URL}/${postId}`, {
+    withCredentials: true,
+  });
+  return res.data;
+};

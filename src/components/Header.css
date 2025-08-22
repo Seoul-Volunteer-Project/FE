@@ -232,17 +232,16 @@
   flex-direction: column;
 
   padding: 0.5rem 0.1rem;
-  box-sizing: border-box; /* ✅ padding 포함한 너비로 계산 */
+  box-sizing: border-box;
 }
 
-/* 드로어가 열렸을 때 */
 .mobile-drawer.open {
   transform: translateX(0);
   opacity: 1;
   pointer-events: auto;
 }
 
-/* 드로어 상단 (로고 + 아이콘 버튼 3개) */
+/* 드로어 상단 */
 .mobile-drawer-header {
   height: 64px;
   display: flex;
@@ -281,22 +280,87 @@
   object-fit: contain;
 }
 
-/* 드로어 안 수직 메뉴 항목 */
+/* ===== 아코디언 메뉴 ===== */
+/* nav-menu 자체는 여전히 flex-col */
 .nav-menu.vertical {
   list-style: none;
   margin: 0;
-  padding: 1.5rem 1rem;
+  padding: 1rem 0.5rem;
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
-  align-items: flex-start;
+  gap: 0.5rem; /* 간격 줄임 */
+  align-items: stretch; /* [수정] 전체 폭 맞춤 */
 }
 
-.nav-menu.vertical li a {
-  text-decoration: none;
-  color: #333;
+/* 상위 메뉴(트리거) */
+.accordion-trigger {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.9rem 1rem;
   font-size: 1.1rem;
-  font-weight: 500;
+  font-weight: 600;
+  color: #333;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.accordion-item {
+  border-bottom: 1px solid #f0f0f0; /* 하단 구분선 */
+}
+
+/*  아코디언 패널 (하위 메뉴) */
+.accordion-panel {
+  max-height: 0; /* 기본 접힘 */
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: max-height 240ms ease, opacity 180ms ease; /* 부드럽게 */
+  padding: 0 1.5rem; /* 접힘 상태: 상하 패딩 제거 */
+  will-change: max-height, opacity; /* 스크롤 높이 변화 최적화 */
+}
+
+/* 열렸을 때의 시각 상태(실제 높이는 JS가 설정) */
+.accordion-item.open .accordion-panel {
+  opacity: 1;
+  pointer-events: auto;
+  padding: 0.5rem 1.5rem 0.8rem 1.5rem;
+}
+
+/* 화살표 회전 */
+.accordion-trigger[aria-expanded="true"] .chevron {
+  transform: rotate(180deg);
+  transition: transform 150ms ease;
+}
+.accordion-trigger[aria-expanded="false"] .chevron {
+  transform: rotate(0deg);
+  transition: transform 150ms ease;
+}
+
+/* 하위 메뉴 버튼 스타일 */
+.drawer-sublink {
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 0.4rem 0;
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: #444;
+  cursor: pointer;
+}
+
+.drawer-sublink:hover {
+  text-decoration: underline;
+}
+
+/* 화살표 아이콘 */
+.chevron {
+  font-size: 0.8rem;
+  color: #777;
 }
 
 /* ===== 오버레이 (배경 어둡게) ===== */
@@ -304,7 +368,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  right: 412px; /* 드로어 제외한 영역만 어둡게 */
+  right: 412px;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0);
   z-index: 150;
@@ -338,8 +402,8 @@
 /* 화면 너비 > 550px일 때 햄버거 내의 홈로고 제거 */
 @media (min-width: 550px) {
   .mobile-logo {
-    visibility: hidden; /* ❌ 안 보이게 */
-    pointer-events: none; /* 클릭도 방지 */
+    visibility: hidden;
+    pointer-events: none;
   }
 }
 
@@ -350,6 +414,6 @@
   }
 
   .drawer-overlay {
-    right: 0; /* 전체화면 어둡게 */
+    right: 0;
   }
 }

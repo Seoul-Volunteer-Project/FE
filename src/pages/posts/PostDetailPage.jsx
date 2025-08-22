@@ -2,6 +2,7 @@ import "./PostDetailPage.css";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getPostById } from "../../api/postAPI";
+import { deletePost } from "../../api/postAPI";
 import { useAuth } from "../../context/AuthContext";
 
 function PostDetailPage() {
@@ -13,6 +14,34 @@ function PostDetailPage() {
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  const handleDeletePost = async () => {
+    if (isDeleting) return; // 중복 요청 방지
+    if (!window.confirm("정말로 삭제하시겠습니까?")) return; // 사용자 확인
+
+    try {
+      setIsDeleting(true);
+      await deletePost(postId); // API 호출
+      alert("삭제가 완료되었습니다.");
+      navigate(`/boards/${boardType}`); // 목록으로 이동
+    } catch (err) {
+      // 상태코드별 에러 메시지
+      const status = err?.response?.status;
+      if (status === 401) {
+        alert("로그인이 필요합니다.");
+      } else if (status === 403) {
+        alert("삭제 권한이 없습니다.");
+      } else if (status === 404) {
+        alert("게시글을 찾을 수 없습니다.");
+      } else {
+        alert("삭제 중 오류가 발생했습니다.");
+      }
+      console.error(err);
+    } finally {
+      setIsDeleting(false);
+    }
+  };
 
   useEffect(() => {
     const fetchDetail = async () => {
@@ -55,7 +84,8 @@ function PostDetailPage() {
       </div>
 
       {/* 내용 */}
-      <div className="post-detail-content">{post.content || ""}</div>
+      {/* 내용이 있을 때만 div 출력 */}
+      {post.content && post.content.trim() !== "" && <div className="post-detail-content">{post.content}</div>}
 
       {/* 첨부 이미지가 있다면 보여주기 (일반형도 이미지 지원) */}
       {post.images && post.images.length > 0 && (
@@ -69,8 +99,8 @@ function PostDetailPage() {
       {/* 하단 우측 버튼: 수정(관리자만), 목록으로 */}
       <div className="post-detail-actions">
         {isAdmin && (
-          <button className="board-write-btn" onClick={() => navigate(`/boards/${boardType}/${postId}/edit`)}>
-            수정하기
+          <button className="board-write-btn delete-btn" onClick={() => handleDeletePost()} disabled={isDeleting}>
+            {isDeleting ? "삭제 중..." : "삭제하기"}
           </button>
         )}
         <button className="board-write-btn cancel-btn" onClick={() => navigate(`/boards/${boardType}`)}>
