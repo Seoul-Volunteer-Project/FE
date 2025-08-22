@@ -110,19 +110,8 @@ function LoginPage() {
         </button>
 
         <p className="signup-link">
-          아직 회원이 아니신가요?{" "}
-          <span onClick={() => navigate("/signup")}>회원가입</span>
+          아직 회원이 아니신가요? <span onClick={() => navigate("/signup")}>회원가입</span>
         </p>
-
-        {/* 관리자 로그인 */}
-        <div className="admin-login-wrapper">
-          <p
-            className="admin-login-link"
-            onClick={() => navigate("/admin-login")}
-          >
-            관리자 로그인
-          </p>
-        </div>
       </form>
     </div>
   );
