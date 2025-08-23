@@ -14,16 +14,28 @@
 
 /* 로고 (헤더 좌측) */
 .logo {
-  font-weight: 700;
-  font-size: 1.7rem;
   display: flex;
   align-items: center;
-  height: 40px;
+  height: 100%;
+  flex: 0 0 auto;
+  max-width: 260px; /* 필요 시 더 늘리거나 제거 */
+  overflow: hidden;
 }
 
 .logo a {
-  text-decoration: none;
-  color: inherit;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0;
+}
+
+/* 로고 이미지 */
+.logo-img {
+  height: 80px; /* 로고 높이를 크게 (헤더 높이 90px 기준) */
+  max-height: 90px; /* 헤더 전체 높이 넘지 않게 */
+  width: auto; /* 비율 유지 */
+  object-fit: contain;
+  display: block;
 }
 
 /* 중앙 메뉴 (데스크탑 전용) */
@@ -129,8 +141,8 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 1.5rem;
-  margin-left: auto;
+  gap: 2rem;
+  margin-left: 1rem;
   height: 64px;
   flex-wrap: nowrap;
 }

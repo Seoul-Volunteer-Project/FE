@@ -7,7 +7,7 @@ import Home from "./pages/Home";
 import GlobalSidebarLayout from "./layouts/GlobalSidebarLayout";
 import ScrollToTop from "./components/ScrollToTop";
 import Intro from "./pages/about/Intro";
-import Goal from "./pages/about/Goal";
+import Donation from "./pages/about/Donation";
 import Housing from "./pages/youthInfo/Housing";
 import Education from "./pages/youthInfo/Education";
 import Finance from "./pages/youthInfo/Finance";
@@ -24,7 +24,7 @@ import PostDetailPage from "./pages/posts/PostDetailPage";
 // 메뉴 정의
 const aboutMenu = [
   { label: "기관 소개", path: "/about/intro" },
-  { label: "함께하기", path: "/about/goal" },
+  { label: "함께하기", path: "/about/donation" },
 ];
 
 const infoMenu = [
@@ -62,7 +62,7 @@ function App() {
             <Route path="/about" element={<GlobalSidebarLayout menuItems={aboutMenu} />}>
               <Route index element={<Intro />} />
               <Route path="intro" element={<Intro />} />
-              <Route path="goal" element={<Goal />} />
+              <Route path="donation" element={<Donation />} />
             </Route>
 
             {/* 청년정보 페이지 라우팅 */}

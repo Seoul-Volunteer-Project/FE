@@ -9,6 +9,7 @@ import iconSun from "../assets/sun.png";
 import iconUser from "../assets/user.png";
 import iconHamburger from "../assets/hamburger.png";
 import iconClose from "../assets/close.png";
+import iconHome from "../assets/homelogo.png";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -52,7 +53,9 @@ function Header() {
       {/* 헤더 */}
       <header className="header">
         <div className="logo">
-          <a href="/"> Youth Care</a>
+          <a href="/">
+            <img src={iconHome} alt="Youth Care" className="logo-img"></img>
+          </a>
         </div>
 
         {/* 중앙 메뉴 */}
@@ -65,7 +68,7 @@ function Header() {
                   <Link to="/about/intro">기관 소개</Link>
                 </li>
                 <li>
-                  <Link to="/about/goal">함께하기</Link>
+                  <Link to="/about/donation">함께하기</Link>
                 </li>
               </ul>
             </li>
